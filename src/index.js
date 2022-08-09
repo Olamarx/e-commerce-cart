@@ -5,12 +5,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import App from './components/App';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
-// import store from './redux/store';
-
-
 const client = new ApolloClient({
-  uri: 'http://localhost:4000', //  http://localhost:4000/graphql https://flyby-gateway.herokuapp.com/
-  cache: new InMemoryCache(),
+  uri: 'http://localhost:4000',
+  cache: new InMemoryCache()
 });
 
 
