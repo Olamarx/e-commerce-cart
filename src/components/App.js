@@ -1,43 +1,17 @@
 import React, { Component } from 'react';
-// import API  from './API';
-import { Query } from '@apollo/client/react/components';
-import  { getAllProducts } from '../graphql/queries';
-
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Men from './Pages/men/Men';
+import Kids from './Pages/Kids/Kids';
 export default class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = []
-  };
-
-  componentDidMount() {
-    <Query query={getAllProducts}>
-
-    </Query>
-  }
-    
   render() {
     return (
-      <div className="App">
-        <Query query={getAllProducts}>
-        {({ loading, error, data }) => {
-                if (loading) return <h2>Loading..</h2>;
-                if (error) return <h2>Error: error</h2>;
-                if (data) {
-                  // destructuring data
-                  const { products } = data.category;
-                  return (
-                    <div>
-                      {products.map((product) => (
-                    <div key={product.id}>
-                      {product.gallery}
-                    </div>
-                      ))}
-                    </div>
-                  );
-                }
-              }}
-        </Query>
+      <div>
+        <Routes>
+        <Route path="/" element={<Navigate to="/women" />} /> 
+        <Route path="/men/" element={<Men />} /> 
+        <Route path="/kids/" element={<Kids/>} />
+        </Routes> 
       </div>
-    );
+    )
   }
 }
