@@ -17,11 +17,11 @@ handleChange(e) {
   render() {
     return (
         <>
-        <Query query={getCurrencies}>
+        {/* <Query query={getCurrencies}>
         {({ data }) => {
           if (data) {
             const { currencies } = data
-            console.log(currencies);
+            // console.log(currencies);
             <select
             value={this.state.symbol}
             onChange={this.handleChange}
@@ -41,7 +41,7 @@ handleChange(e) {
                   </select>
                 }
         }}
-      </Query>
+      </Query> */}
       </>
     )
   }

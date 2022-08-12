@@ -25,27 +25,71 @@ export const GetCategories = (category) =>({
 
 // metrics-webapp, manel
 
-export const GetCategory = (category) => ({
-    type: cartTypes.CARTEGORY,
-    payload: { category }
-})
+export const GetCategory = () => (dispatch) => {
+    const theQuery = `
+    query getProducts {
+        category {
+          name
+          products {
+            name
+            inStock
+            category
+            brand
+            id
+            gallery
+            attributes {
+              id
+              name
+              type
+              items {
+                id
+                value
+                displayValue
+              }
+            }
+            prices {
+              currency{
+                label
+                symbol
+              }
+              amount
+            }
+          }
+        }
+      }
+    `;
+      let result;
+    fetch("http://localhost:4000", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        },
+        body: JSON.stringify({
+            query: theQuery
+        })
+    }).then(response => {
+        return response.json();
+    }).then(data => {
+        result = data
+        console.log(data)
+        return data
+    });
+    dispatch({
+        type: cartTypes.CARTEGORY,
+        payload: result
+    })
+}
 
-export const GetProduct = async () => {
-    return (
-    <Query query={getAllProducts}>
-         {({ data }) => {
-            const { category } = data;
-            const productsData = category.map(({products, name}) => ({
-                name,
-                products
-    }))
+export const GetProduct = async (productsData) => {
+
+
     return {
         type: cartTypes.PRODUCT,
         payload: { productsData }
     }
-             }}
-      </Query>
-)}
+
+}
 
 export const GetCurrencies = (currencies) => ({
     type: cartTypes.CURRENCIES,
@@ -60,12 +104,13 @@ export const GetCurrencies = (currencies) => ({
     };
 
 const reducer = (state = initialize, action ) => {
+    const { payload } = action
     switch (action.type) {
         case cartTypes.CARTEGORIES:
-            return { ...state,  };
+            return { ...state  };
             break;
         case cartTypes.CARTEGORY:
-                return { ...state }; 
+                return { ...payload }; 
             break;
         case cartTypes.PRODUCT:
                 return { ...state };

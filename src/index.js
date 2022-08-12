@@ -7,6 +7,9 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import App from './components/App';
 import reducer from './redux/configfile';
+// import { GetCategory } from './redux/StoreReducer';
+
+// GetCategory()
 
 const store = createStore(reducer)
 
@@ -21,13 +24,11 @@ const root = createRoot(append);
 root.render(
   <React.StrictMode>
     <Router>
-      {/* <Provider store={store}> */}
       <ApolloProvider client={client}>
       <Provider store={store}>
         <App />
       </Provider>
         </ApolloProvider>
-      {/* </Provider> */}
     </Router>
   </React.StrictMode>,
 );
