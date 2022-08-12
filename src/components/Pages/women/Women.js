@@ -4,9 +4,7 @@ import { Query } from '@apollo/client/react/components';
 import  { getAllProducts } from '../../../graphql/queries';
 import { centered, imageContainer } from './helper';
 import './women.css'
-import {
-  GetCategories, GetCategory, GetProduct, GetCurrencies
- } from '../../../redux/StoreReducer'
+import { cartTypes } from '../../../redux/StoreReducer'
 
 
 class Women extends Component {
@@ -20,7 +18,7 @@ class Women extends Component {
   render() {
     return (
       <div className="App">
-        {console.log(this.props.result)}
+        {/* {console.log(this.props.result)} */}
         <Query query={getAllProducts}>
         {({ data }) => {
                 if (data) {
@@ -29,6 +27,7 @@ class Women extends Component {
                   // console.log(products)
                   return (
                     <>
+                    <button onClick={() => this.props}>Change</button>
                     <section className="container">
                       {products.map((product) => (
                     <article className="card" key={product.id}>
@@ -60,64 +59,14 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps =() => {
+const mapDispatchToProps =(dispatch) => {
       return {
-        GetCategories,
-        GetCategory,
-        GetProduct,
-        GetCurrencies
+        categories: () => dispatch({ type: cartTypes.CARTEGORIES }),
+        category: () => dispatch({ type: cartTypes.CARTEGORY }),
+        product: () => dispatch({ type: cartTypes.PRODUCT }),
+        currencies: () => dispatch({ type: cartTypes.CURRENCIES })
       }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Women)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // const { name } = data.categories;
-  // console.log(name)
-  // (<select
-  // value={this.state.options}
-  // onChange={e => this.setState({options: e.target.value })}
-  // >
-  //   {
-  //     name.map((single) => (
-  //       <option
-  //       value={single}
-  //       key={single}
-  //       >
-  //         { single.charAt[1].toUpperCase() }
-  //       </option>
-  //     ))
-  //   }
-  // </select>)
-    
-
-
-  //   <Query query={getAllProducts}>
-      //     {({ loading, error, data }) => {
-      //       if (loading) this.setState({ allData: loading })
-      //       if (error) this.setState({ allData: error })
-      //       if (data){
-      //         const { name } = data.category
-      //         this.setState({ allData: name })
-      //       }
-      //     }}
-      //   </Query>
-      // }

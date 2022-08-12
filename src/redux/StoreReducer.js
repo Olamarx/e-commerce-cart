@@ -38,8 +38,7 @@ export const GetProduct = async () => {
             const productsData = category.map(({products, name}) => ({
                 name,
                 products
-            }))
-console.log("Hello")
+    }))
     return {
         type: cartTypes.PRODUCT,
         payload: { productsData }
@@ -56,7 +55,7 @@ export const GetCurrencies = (currencies) => ({
   const initialize = {
       categories: [],
       category: [],
-      product: ["HELLO"],
+      product: [],
       currencies: []
     };
 
