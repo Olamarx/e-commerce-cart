@@ -4,17 +4,22 @@ import { connect } from 'react-redux';
 // import  { getAllProducts } from '../../../graphql/queries';
 // import { centered, imageContainer } from './helper';
 import './women.css'
-import { cartTypes } from '../../../redux/StoreReducer'
-
+import { cartTypes, GetCategory } from '../../../redux/StoreReducer'
+import productFromAPI from '../../../redux/action/productAction';
 
 class Women extends Component {
   // const categories = getState('categories')
-
+//  constructor(props){
+//   super(props)
+//   this.props.pr
+// }
+  
   render() {
+    // GetCategory()
+    // console.log(this.props)
+    const { products } = this.props
     return (
-      <div> 
-        {console.log(this.props.result)}
-        Working </div>
+      <div> Working </div>
     );
   }
 }
@@ -22,16 +27,16 @@ class Women extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    result: state.cart
+    products: state.product.product
   }
 }
 
 const mapDispatchToProps =(dispatch) => {
       return {
-        categories: () => dispatch({ type: cartTypes.CARTEGORIES }),
-        category: () => dispatch({ type: cartTypes.CARTEGORY }),
-        product: () => dispatch({ type: cartTypes.PRODUCT }),
-        currencies: () => dispatch({ type: cartTypes.CURRENCIES })
+        // categories: () => dispatch({ type: cartTypes.CARTEGORIES }),
+        // category: () => dispatch({ type: cartTypes.CARTEGORY }),
+        product: () => dispatch(productFromAPI())
+        // currencies: () => dispatch({ type: cartTypes.CURRENCIES })
       }
 }
 
