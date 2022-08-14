@@ -3,15 +3,16 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import App from './components/App';
 import reducer from './redux/configfile';
+import thunk from 'redux-thunk';
 // import { GetCategory } from './redux/StoreReducer';
 
 // GetCategory()
 
-const store = createStore(reducer)
+const store = createStore(reducer, applyMiddleware(thunk))
 
 const client = new ApolloClient({
   uri: "http://localhost:4000",
