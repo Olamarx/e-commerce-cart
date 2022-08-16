@@ -3,7 +3,7 @@ export const Action = {
     REMOVE_PRODUCT: 'cart/product/REMOVE_PRODUCT',
 }
 
-const theQuery = `
+export const theQuery = `
 query allCategories {
     categories{
       name
@@ -38,19 +38,6 @@ query allCategories {
   }
 `;
 
-// reducer
-const productReducer = (state = [], action) => {
-    const { payload } = action;
-    switch (action.type){
-        case Action.ADD_PRODUCT:
-            return [...state, payload.products];
-        case Action.REMOVE_PRODUCT:
-            state.filter((product) => product.id !== payload.id);
-            break;
-        default:
-            return state
-    }
-}
 
 // Action Creator 
 // dispatch, name
@@ -71,15 +58,29 @@ const addProduct = () => {
         .then(data => {
             console.log(data)
             const { categories } = data.data
-            console.log(categories[0]);
+            console.log(categories);
             return categories
-            // const eachProcduct = categories.filter((product) => product.name === name)
-        // dispatch({type: Action.ADD_PRODUCT, payload: eachProcduct})
         });
 }
 
 export {
-    addProduct,
+  addProduct,
+}
+
+
+// reducer
+const productReducer = (state = [], action) => {
+    const { payload } = action;
+    switch (action.type){
+        case Action.ADD_PRODUCT:
+          // const newProduct = payload.products
+            return [...state, payload.data];
+        // case Action.REMOVE_PRODUCT:
+        //     state.filter((product) => product.id !== payload.id);
+            break;
+        default:
+            return state
+    }
 }
 
 export default productReducer
