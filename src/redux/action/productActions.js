@@ -17,8 +17,8 @@ export const fetchProducts = () => (dispatch) => {
           })
           .then(data => {
             const { categories } = data.data
-            
-              dispatch({type: FETCH_PRODUCTS, payload: categories})
+            dispatch({type: FETCH_PRODUCTS, payload: categories[0].products})
+            console.log(categories[0])
             });
 }
 
