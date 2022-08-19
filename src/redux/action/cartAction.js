@@ -14,6 +14,6 @@ export const addToCart = (items, product) => (dispatch) => {
     if (!productInCart) {
         cartItems.push({...product, count: 1})
     }
-    localStorage.setItem("cartItems", JSON.stringify(cartItems))
+    // localStorage.setItem("cartItems", JSON.stringify(cartItems))
     dispatch({type: ADD_TO_CART, payload: { cartItems }})
 }
