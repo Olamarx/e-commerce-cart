@@ -5,11 +5,11 @@ export default class filter extends Component {
     return (
       <>
       <label>
-        Order by
+        Order by 
         <select value={this.props.sort}
         onChange={this.props.handleChangeCategory}
         >
-          <option value="">Select</option>
+          <option value="">All Products</option>
           <option value="clothes">Clothes</option>
           <option value="tech">Tech</option>
 
