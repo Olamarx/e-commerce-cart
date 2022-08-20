@@ -10,23 +10,9 @@ class Products extends Component {
     this.props.fetchProducts()
   }
 
-  
-// increaseNumber = (item) => {
-//   if(item.num >= 1) {
-//     item.num++;
-//     console.log(item.num, item)
-//   }
-// }
-
-// decreaseNumber = (item) => {
-// if (item.num > 1) {
-// item.num = item.num - 1
-// console.log(item.num)
-//   }
-// }
-
   render() {
-    const productItems = this.props.products.items.map(product => (
+    console.log(this.props.products.filterItems);
+    const productItems = this.props.products.filterItems.map((product) => (
       <article className="card" key={product.id}>
         <div style={imageContainer}>
           <img className="card_image" src={product.gallery[0]} alt={product.name} />
