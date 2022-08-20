@@ -63,38 +63,32 @@ handleAddToCart = (e, product) => {
     cartItems.forEach((item) => {
       if (item.id === product.id) {
         productAlreadyInCart = true;
-        item.count++;
       }
     })
     if(!productAlreadyInCart){
-      cartItems.push({...product, count:1, num: 1})
+      cartItems.push({...product, num: 1})
     }
     return cartItems;
   })
 }
 
-increaseNumber = (item) => {
-  this.setState((state) => {
-    const cartItems = state.cartItems;
-    cartItems.forEach((ind) => {
-      if(ind.id === item.id && item.num >= 1) {
-        ind.num++;
-        console.log(ind.num)
-      }
-    })
-  })
-  // if () {
-  //   item.num = item.num + 1
-  //   console.log(item.num)
-  // }
-}
+// increaseNumber = (item) => {
+//       if(item.num >= 1) {
+//         item.num++;
+//         console.log(item.num, item)
+//       }
+//   }
+//   // if () {
+//   //   item.num = item.num + 1
+//   //   console.log(item.num)
+//   // }
 
-decreaseNumber = (item) => {
-  if (item.num > 1) {
-    item.num = item.num - 1
-    console.log(item.num)
-  }
-}
+// decreaseNumber = (item) => {
+//   if (item.num > 1) {
+//     item.num = item.num - 1
+//     console.log(item.num)
+//   }
+// }
 
   render() {
   return (
@@ -105,13 +99,13 @@ decreaseNumber = (item) => {
     handleChangeCategory={this.handleChangeCategory}
     />
     <Products
-    // allProducts={this.state.filteredProducts}
+    allProducts={this.state.filteredProducts}
     handleAddToCart={this.handleAddToCart}
     />
     </div>
     <Basket
-    increaseNumber={this.increaseNumber}  
-    decreaseNumber={this.decreaseNumber}
+    // increaseNumber={this.increaseNumber}  
+    // decreaseNumber={this.decreaseNumber}
     cartItems={this.state.cartItems}
     handleRemoveFromCart={this.handleRemoveCart}
     />
