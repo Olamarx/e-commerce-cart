@@ -6,7 +6,21 @@ export default class Basket extends Component {
     this.state = {cartItems: []}
   }
 
-  
+
+increaseNumber = (item) => {
+  if(item.num >= 1) {
+    item.num++;
+    console.log(item.num, item)
+  }
+}
+
+decreaseNumber = (item) => {
+if (item.num > 1) {
+item.num = item.num - 1
+console.log(item.num)
+  }
+}
+
   render() {
     let { cartItems } = this.props
 
@@ -27,9 +41,9 @@ export default class Basket extends Component {
                 <span>color</span>
                 </div>
                 <div>
-                <button onClick={() => this.props.increaseNumber(item)}>+</button>
+                <button onClick={() => this.increaseNumber(item)}>+</button>
                 <span>{item.num}</span>
-                <button onClick={() => this.props.decreaseNumber(item)}>-</button>
+                <button onClick={() => this.decreaseNumber(item)}>-</button>
                 </div>
                 <img className="card_image" src={item.gallery[0]} alt={item.name} />
               </li>
