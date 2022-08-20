@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
-
-export default class filter extends Component {
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { filterProducts } from '../../../redux/action/productActions'
+class Filter extends Component {
   render() {
     return (
       <>
-      <label>
+      <label htmlFor="category" >
         Order by 
-        <select value={this.props.sort}
-        onChange={this.props.handleChangeCategory}
+        <select id="category" value={this.props.sort}
+        onChange={(e) => this.props.filterProducts(this.props.products, e.target.value)}
         >
           <option value="">All Products</option>
           <option value="clothes">Clothes</option>
@@ -19,3 +20,10 @@ export default class filter extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  products: state.products.items,
+  category: state.products.categoryName
+})
+
+export default connect(mapStateToProps, {filterProducts})(Filter)
