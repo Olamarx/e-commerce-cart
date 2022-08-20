@@ -77,7 +77,6 @@ const productReducer = (state = [], action) => {
             return [...state, payload.data];
         // case Action.REMOVE_PRODUCT:
         //     state.filter((product) => product.id !== payload.id);
-            break;
         default:
             return state
     }
