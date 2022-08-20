@@ -1,8 +1,8 @@
 import { FETCH_PRODUCTS, FILTER_PRODUCTS } from "./types";
 import { theQuery } from "../StoreReducer";
 
-export const fetchProducts = () => (dispatch) => {
-    fetch("http://localhost:4000", {
+export const fetchProducts = () => async (dispatch) => {
+    const response = await fetch("http://localhost:4000", {
               method: "POST",
               headers: {
                   "Content-Type": "application/json",
@@ -11,15 +11,9 @@ export const fetchProducts = () => (dispatch) => {
               body: JSON.stringify({
                   query: theQuery
               })
-          })
-          .then(response => {
-              return response.json();
-          })
-          .then(data => {
-            const { categories } = data.data
-            dispatch({type: FETCH_PRODUCTS, payload: categories[0].products})
-            console.log(categories[0])
-            });
+          });
+    const data = await response.json();
+    dispatch({type: FETCH_PRODUCTS, payload: data.data.categories[0].products});
 }
 
 export const filterCategory = (products, theCategory) => (dispatch) => {
