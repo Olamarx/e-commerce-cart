@@ -16,7 +16,7 @@ export const fetchProducts = () => async (dispatch) => {
     dispatch({type: FETCH_PRODUCTS, payload: data.data.categories[0].products});
 }
 
-export const filterCategory = (products, theCategory) => (dispatch) => {
+export const filterProducts = (products, theCategory) => (dispatch) => {
     dispatch({
         type: FILTER_PRODUCTS,
         payload: {
