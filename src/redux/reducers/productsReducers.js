@@ -12,7 +12,7 @@ export default function (state = initialState, action ) {
                 filterItems: action.payload.items,
                 categoryName: action.payload.category
             }
-            default:
-                return state;
+        default:
+            return state;
     }
 }
