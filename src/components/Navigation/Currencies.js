@@ -1,48 +1,49 @@
 import React, { Component } from 'react';
-import { Query } from '@apollo/client/react/components';
-import { getCurrencies } from '../../graphql/queries';
+import { connect } from 'react-redux';
+import { fetchCurrencies } from '../../redux/action/currencies';
 
-export default class Currencies extends Component {
+class Currencies extends Component {
 constructor(props){
-  super(props)
-  this.state = { symbol: '$' }
-
-  this.handleChange = this.handleChange.bind(this)
+  super(props);
+  this.state = { symbol: "$" }
 }
 
-handleChange(e) {
-  this.setState({symbol: e.target.value});
+componentWillMount() {
+  this.props.fetchCurrencies()
+}
+
+handleChange = (event) => {
+  this.setState({ symbol: event.target.value });
 }
 
   render() {
     return (
         <>
-        {/* <Query query={getCurrencies}>
-        {({ data }) => {
-          if (data) {
-            const { currencies } = data
-            // console.log(currencies);
-            <select
-            value={this.state.symbol}
-            onChange={this.handleChange}
-            >
-                  <option value={this.state.symbol}>{null}</option>
-                    {
-                      currencies.map(({ symbol, label }) => (
-                        <option
-                        value={symbol}
-                        key={symbol}
-                        >
-                          gdfgdg
-                          {label}
-                        </option>
-                      ))
-                    }
-                  </select>
-                }
-        }}
-      </Query> */}
+        <select id="category" value={this.state.symbol}
+        onChange={this.handleChange}
+        >
+        <option>{this.state.symbol}</option>
+          {
+            this.props.currencies.map((each) => (
+              each.symbol === "A$" ? null : (
+                <option
+                key={each.symbol}
+                value={each.symbol}
+                >
+                  {`${each.symbol} ${each.label}`}
+                </option>
+              )
+            ))
+          }
+          
+        </select>
       </>
     )
   }
 }
+
+const mapStateToProps = state => ({
+  currencies: state.currencies.currencies
+})
+
+export default connect(mapStateToProps, {fetchCurrencies})(Currencies)
