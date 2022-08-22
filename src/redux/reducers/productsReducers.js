@@ -5,7 +5,7 @@ const initialState = {items: [], filterItems: [], categoryName: ''}
 export default function (state = initialState, action ) {
     switch(action.type){
         case FETCH_PRODUCTS:
-            return {...state, items: action.payload }
+            return {...state, items: action.payload, filterItems: action.payload}
         case FILTER_PRODUCTS:
             return {
                 ...state,
