@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import './products.css'
 import addProductImage from "../../../utils/Common.png"
 import {fetchProducts } from '../../../redux/action/productActions'
+import { addToCart } from '../../../redux/action/cartAction'
 class Products extends Component {
 
   componentWillMount() {
@@ -18,7 +19,7 @@ class Products extends Component {
           <img className="card_image" src={product.gallery[0]} alt={product.name} />
           {product.inStock ? (<img src={addProductImage} alt={product.name}
           style={{cursor: "pointer"}}
-          onClick={(e) => this.props.handleAddToCart(e, product)} />)
+          onClick={() => this.props.addToCart(this.props.cartItems, product)} />)
           : null}
           {!product.inStock ? (<div style={centered}>Out of stock</div>) : null}
         </div>
@@ -37,6 +38,9 @@ class Products extends Component {
     }  
 }
 
-const mapStateToProps = state => ({products: state.products})
+const mapStateToProps = state => ({
+  products: state.products,
+  cartItems: state.cart.items
+})
 
-export default connect(mapStateToProps, {fetchProducts})(Products)
+export default connect(mapStateToProps, {fetchProducts, addToCart})(Products)
