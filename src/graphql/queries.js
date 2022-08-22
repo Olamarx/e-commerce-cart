@@ -34,12 +34,3 @@ export const getAllProducts = gql`
     }
   }
 `;
-
-export const getCurrencies = gql`
-  query getCurrencies {
-    currencies{
-      symbol
-      label
-    }
-  }
-`;
