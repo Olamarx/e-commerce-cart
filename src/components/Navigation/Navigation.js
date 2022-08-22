@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import Currencies from './Currencies';
+import logo from '../../utils/logo.png'
 
 export default class Navigation extends Component {
   render() {
@@ -42,10 +43,14 @@ export default class Navigation extends Component {
           </ul>
 
           <div>
-            Middle Image
+            <img src={logo} alt="logo" />
           </div>
 
+          <div>
           <Currencies />
+            
+          </div>
+
         </nav>
       </header>
       </>
