@@ -1,0 +1,39 @@
+.select {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.select select {
+    width: 50px;
+    border: none;
+    outline: none;
+}
+
+.select select option {
+    width: 100px;
+    border-radius: 10px;
+}
+
+.cart {
+    position: absolute;
+    border: 50;
+    left: 5;
+}
+
+/* div.relative {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    border: 3px solid #73AD21;
+  }
+  
+  div.absolute {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 200px;
+    height: 100px;
+    border: 3px solid #73AD21;
+  } */
+  
