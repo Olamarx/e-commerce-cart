@@ -21,19 +21,25 @@
     left: 5;
 }
 
-/* div.relative {
+.select div {
     position: relative;
-    width: 400px;
-    height: 200px;
-    border: 3px solid #73AD21;
-  }
-  
-  div.absolute {
+}
+
+.select div img {
+    width: 30px;
+    height: 30px;
+}
+
+.select div span {
     position: absolute;
-    top: 80px;
-    right: 0;
-    width: 200px;
-    height: 100px;
-    border: 3px solid #73AD21;
-  } */
-  
+    top: -8px;
+    right: -8px;
+    background-color: black;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
