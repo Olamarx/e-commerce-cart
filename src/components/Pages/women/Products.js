@@ -12,7 +12,6 @@ class Products extends Component {
   }
 
   render() {
-    console.log(this.props.products.filterItems);
     const productItems = this.props.products.filterItems.map((product) => (
       <article className="card" key={product.id}>
         <div style={imageContainer}>
