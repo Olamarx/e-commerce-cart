@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchCurrencies } from '../../redux/action/currencies';
 import img from '../../utils/Vector.png'
 import style from './Currencies.module.css'
-
+import { addToCart } from '../../redux/action/cartAction';
 
 class Currencies extends Component {
 constructor(props){
@@ -19,7 +19,20 @@ handleChange = (event) => {
   this.setState({ symbol: event.target.value });
 }
 
+result = () => {
+  const {cartItems} = this.props
+  let result = null
+  let check = 0
+  for(let i =0; i < cartItems.length; i++) {
+    check = cartItems[i].num + check
+  }
+  result = check
+  return result
+}
+
+
   render() {
+    console.log(this.result())
     return (
         <div className={style.select}>
         <select id="category"
@@ -37,11 +50,12 @@ handleChange = (event) => {
                 </option>
             ))
           }
-          
         </select>
-        <div >
+        <div>
           <img src={img} alt="cart" />
-          <span className={style.cart}>10</span>
+          {
+            this.result() ? <span>{this.result()}</span> : null
+          }
         </div>
       </div>
     )
@@ -49,7 +63,8 @@ handleChange = (event) => {
 }
 
 const mapStateToProps = state => ({
-  currencies: state.currencies.currencies
+  currencies: state.currencies.currencies,
+  cartItems: state.cart.items
 })
 
-export default connect(mapStateToProps, {fetchCurrencies})(Currencies)
+export default connect(mapStateToProps, {fetchCurrencies, addToCart})(Currencies)
