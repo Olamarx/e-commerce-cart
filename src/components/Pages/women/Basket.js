@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import {addToCart} from '../../../redux/action/cartAction'
 
-export default class Basket extends Component {
+class Basket extends Component {
   constructor(props){
     super(props)
     this.state = {cartItems: []}
@@ -23,7 +25,7 @@ console.log(item.num)
 
   render() {
     let { cartItems } = this.props
-
+    console.log(cartItems)
     return (
       <div>{cartItems.length === 0 ? "Basket is empty" :
       (<div>You have { cartItems.length} products in the basket</div> )}
@@ -56,3 +58,9 @@ console.log(item.num)
     )
   }
 }
+
+const mapStateToProps = state => ({
+  cartItems: state.cart.items
+})
+
+export default connect(mapStateToProps, {addToCart})(Basket)
