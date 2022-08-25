@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { filterProducts } from '../../../redux/action/productActions'
+import './filter.css'
+
 class Filter extends Component {
   render() {
     return (
       <>
-      <label htmlFor="category" >
+      <label className="label-container" htmlFor="category" >
         Order by 
         <select id="category" value={this.props.sort}
         onChange={(e) => this.props.filterProducts(this.props.products, e.target.value)}
