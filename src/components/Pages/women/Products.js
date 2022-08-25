@@ -30,9 +30,9 @@ class Products extends Component {
     ))
 
     return (
-      <div>
+      <section className="container">
         {productItems}
-      </div>
+      </section>
     )
     }  
 }
