@@ -1,3 +1,5 @@
 .women {
-    display: flex;
+    width: 80%;
+    margin: auto auto;
+    margin-top: 70px;
 }
