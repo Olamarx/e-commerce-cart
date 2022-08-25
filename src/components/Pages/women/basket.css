@@ -1,0 +1,13 @@
+.cart-bag {
+    position: absolute;
+    /* -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px); */
+    margin-left: 55%;
+    padding: 20px;
+    top: 100px;
+    right: 60px;
+}
+
+.cart-bag ul {
+    list-style: none;
+}
