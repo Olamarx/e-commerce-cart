@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {addToCart} from '../../../redux/action/cartAction'
+import './basket.css'
 
 class Basket extends Component {
   constructor(props){
@@ -27,11 +28,10 @@ console.log(item.num)
     let { cartItems } = this.props
     console.log(cartItems)
     return (
-      <div>{cartItems.length === 0 ? "Basket is empty" :
-      (<div>You have { cartItems.length} products in the basket</div> )}
+      <>
       {cartItems.length > 0 && 
       (
-        <div>
+        <div className="cart-bag">
           <ul>
           <span>My Bag. { cartItems.length} {cartItems.length > 1 ? "items" : "item" }</span>
             {cartItems.map((item) => (
@@ -54,7 +54,7 @@ console.log(item.num)
         </div>
       )
       }
-      </div>
+      </>
     )
   }
 }
