@@ -15,7 +15,7 @@ class Products extends Component {
     const productItems = this.props.products.filterItems.map((product) => (
       <article className="card" key={product.id}>
         <div style={imageContainer}>
-          <img className="card_image" src={product.gallery[0]} alt={product.name} />
+          <img className="card_image1" src={product.gallery[0]} alt={product.name} />
           {product.inStock ? (<img src={addProductImage} alt={product.name}
           style={{cursor: "pointer"}}
           onClick={() => this.props.addToCart(this.props.cartItems, product)} />)
