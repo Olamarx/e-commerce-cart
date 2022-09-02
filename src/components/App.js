@@ -1,3 +1,4 @@
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -15,12 +16,12 @@ export default class App extends Component {
         <div>
           <Navigation />
           <Routes>
-          <Route path="/" exact element={<Women />} /> 
-          <Route path="/men" element={<Men />} /> 
-          <Route path="/kids" element={<Kids/>} />
-          </Routes> 
+            <Route path="/" exact element={<Women />} />
+            <Route path="/men" element={<Men />} />
+            <Route path="/kids" element={<Kids />} />
+          </Routes>
         </div>
-        </Provider>
-    )
+      </Provider>
+    );
   }
 }
