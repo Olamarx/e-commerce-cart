@@ -1,3 +1,4 @@
+/* eslint-disable react/no-multi-comp */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-param-reassign */
 /* eslint-disable class-methods-use-this */
@@ -30,9 +31,7 @@ class Basket extends Component {
             <div className="item-number">
               <span className="my-bag">My Bag.</span>
               <span className="item-number">
-                {' '}
                 { cartItems.length}
-                {' '}
                 {cartItems.length > 1 ? 'items' : 'item' }
               </span>
             </div>
