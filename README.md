@@ -55,7 +55,7 @@ Contributions, issues, and feature requests are welcome!
 
 Feel free to check the [issues](https://github.com/Olamarx/metric-web-app/issues) page.
 
-## [Template on Behance](https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junior-Frontend-Test-Designs-(Public)) by [SCANDIWEB](https://scandiweb.com)
+## [Template on Figma](https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junior-Frontend-Test-Designs-(Public)) by [SCANDIWEB](https://scandiweb.com)
 
 ## Show your support
 Give a ⭐️ if you like this project!
