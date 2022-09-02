@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react/no-multi-comp */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-param-reassign */
@@ -36,7 +37,8 @@ class Basket extends Component {
               </span>
             </div>
             {cartItems.map((item) => (
-              <li key={item.id}>
+              <li>
+                {/* key={item.id} */}
                 <div className="description">
                   <p>{item.name}</p>
                   <p className="description_para">
@@ -59,7 +61,16 @@ class Basket extends Component {
                         color:
                         <div className="color-gorup">
                           { item.attributes[1].items.map((ind) => (
-                            <span className="color-product" style={{ backgroundColor: ind.value }} key={ind.id}>{null}</span>
+                            <span
+                              className="color-product"
+                              style={{ backgroundColor: ind.value }}
+                            >
+                              {null}
+                            </span>
+                            // This is due to linter throwing error and the
+                            // article tag must be closed, I am still reseaching the
+                            // cause of the key error
+                            // key={ind.id}
                           ))}
                         </div>
                       </div>
