@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:wght@300;400;600&display=swap');
 
 .item-number {
-    font-family: r;
     font-size: 16px;
     font-family: 'Raleway', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -16,6 +15,7 @@
     top: 100px;
     right: 60px;
     display: flex;
+    flex-direction: column;
     max-height: 500px;
     overflow: auto;
     align-content: center;
@@ -25,6 +25,7 @@
 }
 
 .cart-bag ul {
+    margin-top: 150px;
     list-style: none;
 }
 
@@ -92,6 +93,26 @@
     background-color: white;
     width: 25px;
     height: 25px;
+}
+.color-product {
+    /* display: flex; */
+    cursor: pointer;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* flex-direction: column; */
+    /* border: 2px solid black; */
+    width: 28px;
+    height: 28px;
+}
+
+.color-gorup {
+    display: flex;
+    flex-direction: row;
+    /* cursor: pointer; */
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    gap: 5px;
 }
 
 .size-btn button:hover {
