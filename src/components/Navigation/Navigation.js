@@ -1,8 +1,10 @@
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import Currencies from './Currencies';
-import logo from '../../utils/logo.png'
-import style from './Navigation.module.css'
+import logo from '../../utils/logo.png';
+import style from './Navigation.module.css';
+
 export default class Navigation extends Component {
   render() {
     const navLinkStyles = ({ isActive }) => ({
@@ -16,49 +18,49 @@ export default class Navigation extends Component {
     });
     return (
       <>
-      <header>
-        <nav className={style.nav}>
-          <ul className={style.link} >
-            <li>
-              <NavLink
-                to="/"
+        <header>
+          <nav className={style.nav}>
+            <ul className={style.link}>
+              <li>
+                <NavLink
+                  to="/"
                 // className={style.link}
-                style={navLinkStyles}
-              >
+                  style={navLinkStyles}
+                >
                   WOMEN
-              </NavLink>
-            </li>
+                </NavLink>
+              </li>
 
-            <li>
-              <NavLink
-                to="/men"
-                style={navLinkStyles}
-              >
-                MEN
-            </NavLink>
-            </li>
+              <li>
+                <NavLink
+                  to="/men"
+                  style={navLinkStyles}
+                >
+                  MEN
+                </NavLink>
+              </li>
 
-            <li>
-              <NavLink
-                to="/kids"
-                style={navLinkStyles}
-              >
-                KIDS
-            </NavLink>
-            </li>
-          </ul>
+              <li>
+                <NavLink
+                  to="/kids"
+                  style={navLinkStyles}
+                >
+                  KIDS
+                </NavLink>
+              </li>
+            </ul>
 
-          <div>
-            <img src={logo} alt="logo" />
-          </div>
+            <div>
+              <img src={logo} alt="logo" />
+            </div>
 
-          <div>
-          <Currencies />
-          </div>
+            <div>
+              <Currencies />
+            </div>
 
-        </nav>
-      </header>
+          </nav>
+        </header>
       </>
-    )
+    );
   }
 }
