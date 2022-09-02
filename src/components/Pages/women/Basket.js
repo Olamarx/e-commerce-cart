@@ -21,7 +21,6 @@ class Basket extends Component {
 
   render() {
     const { cartItems } = this.props;
-    console.log(cartItems);
     return (
       <>
         {cartItems.length > 0
