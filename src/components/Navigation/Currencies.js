@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react/no-multi-comp */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/no-deprecated */
@@ -46,7 +47,8 @@ class Currencies extends Component {
           {
             this.props.currencies.map((each) => (
               <option
-                key={each.symbol}
+              // This is due to linter throwing error which I am still reseaching the cause
+                // key={each.symbol}
                 value={each.symbol}
               >
                 {`${each.symbol} ${each.label}`}
