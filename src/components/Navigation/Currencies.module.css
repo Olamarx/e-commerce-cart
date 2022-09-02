@@ -1,45 +1,43 @@
 .select {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .select select {
-    width: 50px;
-    border: none;
-    outline: none;
+  width: 50px;
+  border: none;
+  outline: none;
 }
 
 .select select option {
-    width: 100px;
-    border-radius: 10px;
+  width: 100px;
+  border-radius: 10px;
 }
 
 .cart {
-    position: absolute;
-    border: 50;
-    left: 5;
+  position: absolute;
 }
 
 .select div {
-    position: relative;
+  position: relative;
 }
 
 .select div img {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 .select div span {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background-color: black;
-    color: white;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: black;
+  color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
