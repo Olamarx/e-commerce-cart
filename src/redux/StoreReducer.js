@@ -33,9 +33,7 @@ query allCategories {
   }
 `;
 
-
-
-export const getCurrencies =`
+export const getCurrencies = `
   query getCurrencies {
     currencies{
       symbol
