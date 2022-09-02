@@ -1,3 +1,4 @@
+/* eslint-disable react/no-multi-comp */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/no-deprecated */
 /* eslint-disable react/prop-types */
