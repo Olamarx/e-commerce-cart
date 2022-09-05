@@ -1,75 +1,67 @@
-![](https://img.shields.io/badge/Microverse-blueviolet)
+![](https://img.shields.io/badge/Test%20Project-SCANDIWEB-red)
+# SCANDIWEB Test Project
 
-# Project Name
-
-> Description the project.
-
+> This is a test project from SCANDIWEB.
+> This E-commerce app has different products which could be added to cart and be filtered according to category.
+> I am yet to complete this app.
 
 ## Built With
+- React
+- Redux
+- CSS
+- GraphQL
+- Gitflow
+- Eslint
 
-- Major languages
-- Frameworks
-- Technologies used
-
-## Live Demo (if available)
-
-[Live Demo Link](https://livedemo.com)
-
+## Live Demos
+- [Not Available]()
 
 ## Getting Started
-
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
-To get a local copy up and running follow these simple example steps.
+To have a local copy of the code, follow the following steps:
 
 ### Prerequisites
+- A web browser (like Google Chrome, Opera...).
+- A code editor (like Atom, VScode...).
 
 ### Setup
 
-### Install
+To setup the project locally: clone the repository using:
 
-### Usage
+```
+https://github.com/Olamarx/e-commerce-cart.git
+```
+run  `cd e-commerce-cart/src/junior-react-endpoint/README.md`
+follow the instruction to get the data I used and after that, continue with the following 
+### Install dependencies
+run : `npm install`
 
-### Run tests
+### Build the app
+run: `npm run build`
 
-### Deployment
+### Run the app
+run: `npm start`
 
 
+## Author
+👤 **Owoeye Olaoluwa (Olamarx)**
 
-## Authors
-
-👤 **Author1**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@githubhandle](https://github.com/Olamarx)
+- Twitter: [@twitterhandle](https://twitter.com/Owoeye0laoluwa)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/olaoluwa-owoeye-617702162/)
+- Facebook: [Facebook](https://web.facebook.com/olaoluwa.owoeye.39)
 
 ## 🤝 Contributing
-
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues](https://github.com/Olamarx/metric-web-app/issues) page.
+
+## [Template on Behance](https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junior-Frontend-Test-Designs-(Public)) by [SCANDIWEB](https://scandiweb.com)
 
 ## Show your support
-
 Give a ⭐️ if you like this project!
 
 ## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+- Hat tip to code reviewers and to everyone who reviewed the project and made suggestions.
 
 ## 📝 License
-
-This project is [MIT](./LICENSE) licensed.
-
-_NOTE: we recommend using the [MIT license](https://choosealicense.com/licenses/mit/) - you can set it up quickly by [using templates available on GitHub](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository). You can also use [any other license](https://choosealicense.com/licenses/) if you wish._
+This project is [MIT](LICENSE) licensed.

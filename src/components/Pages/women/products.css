@@ -1,0 +1,17 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px;
+
+  /* margin: auto 20px; */
+}
+
+.card {
+  width: 350px;
+  height: 450px;
+}
+
+.card_image1 {
+  width: 350px;
+  height: 350px;
+}
