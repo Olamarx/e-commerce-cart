@@ -7,6 +7,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { imageContainer, centered } from './helper';
 import './products.css';
 import addProductImage from '../../../utils/Common.png';

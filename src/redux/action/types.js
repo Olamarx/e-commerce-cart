@@ -1,3 +1,5 @@
+export const FETCH_CATEGORIES = 'products/products/FETCH_CATEGORIES';
+
 export const FETCH_PRODUCTS = 'products/products/FETCH_PRODUCTS';
 export const FILTER_PRODUCTS = 'filter/products/FILTER_PRODUCTS';
 

@@ -1,7 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import Currencies from './Currencies';
+// import Currencies from './Currencies';
 import logo from '../../utils/logo.png';
 import style from './Navigation.module.css';
 
@@ -27,25 +27,25 @@ export default class Navigation extends Component {
                 // className={style.link}
                   style={navLinkStyles}
                 >
-                  WOMEN
+                  All
                 </NavLink>
               </li>
 
               <li>
                 <NavLink
-                  to="/men"
+                  to="/tech"
                   style={navLinkStyles}
                 >
-                  MEN
+                  Tech
                 </NavLink>
               </li>
 
               <li>
                 <NavLink
-                  to="/kids"
+                  to="/clothes"
                   style={navLinkStyles}
                 >
-                  KIDS
+                  Clothes
                 </NavLink>
               </li>
             </ul>
@@ -55,7 +55,7 @@ export default class Navigation extends Component {
             </div>
 
             <div>
-              <Currencies />
+              {/* <Currencies /> */}
             </div>
 
           </nav>
