@@ -39,3 +39,12 @@ query categories {
     name
    }
 }`;
+
+export const currencies = `
+  query getCurrencies {
+    currencies{
+      symbol
+      label
+    }
+  }
+`;

@@ -6,15 +6,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-// import { FETCH_CATEGORIES } from '../../../redux/action/types';
-import apiData from '../../../apiHolder';
-import {fetchCategories} from '../../../redux/action/actionCreator';
-import { categories, products } from '../../../graphql/queries';
+import { fetchCategories, fetchProducts } from '../../../redux/action/actionCreators';
 import './women.css';
 
 class All extends Component {
   componentDidMount() {
-    this.props.categories('This is the data');
+    this.props.categories();
+    this.props.products();
   }
 
   render() {
@@ -27,4 +25,8 @@ const mapStateToProps = (state) => {
   return state;
 };
 
-export default connect(mapStateToProps, { categories: fetchCategories })(All);
+export default connect(mapStateToProps,
+  {
+    categories: fetchCategories,
+    products: fetchProducts,
+  })(All);

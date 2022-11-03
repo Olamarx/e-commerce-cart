@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 
-import categoriesReducer from '../redux/reducers/categories';
+import categoriesReducer from '../redux/reducers/categoriesReducer';
+import productsReducer from '../redux/reducers/productsReducer';
 // import thunk from 'redux-thunk';
 // import rootReducer from '../redux/reducers';
 // applyMiddleware, compose,
@@ -10,8 +11,8 @@ import categoriesReducer from '../redux/reducers/categories';
 // const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = combineReducers({
-  trick: () => 'hello world',
   categories: categoriesReducer,
+  products: productsReducer,
 });
 
 // const store = createStore(
