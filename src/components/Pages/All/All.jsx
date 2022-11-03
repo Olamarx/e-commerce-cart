@@ -14,10 +14,6 @@ import './women.css';
 
 class All extends Component {
   componentDidMount() {
-    (async () => {
-      const data = await apiData(products)
-      console.log(data);
-    })()
     this.props.categories('This is the data');
   }
 

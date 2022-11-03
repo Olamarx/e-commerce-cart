@@ -4,7 +4,7 @@ const init = [];
 const categoriesReducer = (state = init, action) => {
   switch (action.type) {
     case FETCH_CATEGORIES:
-      return [...state, action.payload];
+      return [...action.payload];
 
     default:
       return state;

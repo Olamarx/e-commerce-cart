@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 import Clothes from './Pages/Clothes/Clothes';
 import Tech from './Pages/Tech/Tech';
@@ -11,10 +12,11 @@ import Navigation from './Navigation/Navigation';
 import './App.css';
 import store from './store';
 
+const theStore = createStore(store, applyMiddleware(thunk));
 export default class App extends Component {
   render() {
     return (
-      <Provider store={createStore(store)}>
+      <Provider store={theStore}>
         <div>
           <Navigation />
           <Routes>
