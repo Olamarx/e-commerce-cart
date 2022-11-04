@@ -27,7 +27,7 @@ class Products extends Component {
         </div>
         <div>
           <div>{product.name}</div>
-          <div>{`${currency}${product.prices[0].amount}`}</div>
+          <div>{`${currency} ${product.prices[0].amount}`}</div>
         </div>
       </article>
     ));
