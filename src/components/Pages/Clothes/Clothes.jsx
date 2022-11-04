@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { imageContainer, centered } from '../general/helper';
+import { addToCart } from '../../../redux/action/actionCreators';
 import addProductImage from '../../../utils/Common.png';
 import '../All/loading.css';
 import Products from '../general/Products';
@@ -30,6 +31,7 @@ class Clothes extends Component {
                     currency={currency}
                     centered={centered}
                     imageContainer={imageContainer}
+                    addToCart={addToCart}
                   />
                 </section>
               </div>
@@ -40,6 +42,11 @@ class Clothes extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ products: state.products[1], currency: state.useCurrency });
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    products: state.products[1], currency: state.useCurrency,
+  };
+};
 
 export default connect(mapStateToProps)(Clothes);

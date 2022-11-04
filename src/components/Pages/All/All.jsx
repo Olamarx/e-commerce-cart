@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { imageContainer, centered } from '../general/helper';
+import { addToCart } from '../../../redux/action/actionCreators';
 import addProductImage from '../../../utils/Common.png';
 import Products from '../general/Products';
 import '../general/all.css';
@@ -37,6 +38,7 @@ class All extends Component {
                     centered={centered}
                     currency={currency}
                     imageContainer={imageContainer}
+                    addToCart={addToCart}
                   />
                 </section>
               </div>

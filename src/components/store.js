@@ -4,6 +4,7 @@ import categoriesReducer from '../redux/reducers/categoriesReducer';
 import productsReducer from '../redux/reducers/productsReducer';
 import currencyReducer from '../redux/reducers/currencyReducer';
 import useCurrencyReducer from '../redux/reducers/useCurrencyReducer';
+import addToCartReducer from '../redux/reducers/addToCartReducer';
 // import thunk from 'redux-thunk';
 // import rootReducer from '../redux/reducers';
 // applyMiddleware, compose,
@@ -17,6 +18,7 @@ const store = combineReducers({
   products: productsReducer,
   currencies: currencyReducer,
   useCurrency: useCurrencyReducer,
+  cart: addToCartReducer,
 });
 
 // const store = createStore(
