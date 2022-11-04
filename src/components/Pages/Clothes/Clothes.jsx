@@ -1,10 +1,18 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class Kids extends Component {
+class Clothes extends Component {
   render() {
     return (
-      <div>Kids</div>
+      <div>Clothes</div>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  console.log(state);
+  return state;
+};
+
+export default connect(mapStateToProps)(Clothes);

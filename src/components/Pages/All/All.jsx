@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/no-deprecated */
 /* eslint-disable import/extensions */
 /* eslint-disable react/destructuring-assignment */
@@ -16,14 +17,17 @@ class All extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (<div>Hell0</div>);
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => { 
   console.log(state);
-  return state;
-};
+   return {
+    products: state.products[0] 
+   }
+  };
 
 export default connect(mapStateToProps,
   {
