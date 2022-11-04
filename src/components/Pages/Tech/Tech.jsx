@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { imageContainer, centered } from '../All/helper';
+import { imageContainer, centered } from '../general/helper';
 import addProductImage from '../../../utils/Common.png';
 import '../All/loading.css';
 import Products from '../general/Products';
