@@ -46,6 +46,11 @@ class All extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ products: state.products[0] });
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+  products: state.products[0]
+  }
+};
 
 export default connect(mapStateToProps)(All);

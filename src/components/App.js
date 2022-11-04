@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { fetchCategories, fetchProducts } from '../redux/action/actionCreators';
+import { fetchCategories, fetchProducts, fetchCurrencies } from '../redux/action/actionCreators';
 import Clothes from './Pages/Clothes/Clothes';
 import Tech from './Pages/Tech/Tech';
 import All from './Pages/All/All';
@@ -16,6 +16,7 @@ class App extends Component {
   componentDidMount() {
     this.props.fetchCategories();
     this.props.fetchProducts();
+    this.props.fetchCurrencies();
   }
 
   render() {
@@ -36,4 +37,5 @@ export default connect(null,
   {
     fetchCategories,
     fetchProducts,
+    fetchCurrencies,
   })(App);

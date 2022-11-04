@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 
 import categoriesReducer from '../redux/reducers/categoriesReducer';
 import productsReducer from '../redux/reducers/productsReducer';
+import currencyReducer from '../redux/reducers/currencyReducer';
 // import thunk from 'redux-thunk';
 // import rootReducer from '../redux/reducers';
 // applyMiddleware, compose,
@@ -13,6 +14,7 @@ import productsReducer from '../redux/reducers/productsReducer';
 const store = combineReducers({
   categories: categoriesReducer,
   products: productsReducer,
+  currencies: currencyReducer,
 });
 
 // const store = createStore(
