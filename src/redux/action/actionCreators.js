@@ -1,5 +1,7 @@
 /* eslint-disable import/prefer-default-export */
-import { FETCH_CATEGORIES, FETCH_PRODUCTS, FETCH_CURRENCIES } from './types';
+import {
+  FETCH_CATEGORIES, FETCH_PRODUCTS, FETCH_CURRENCIES, USE_CURRENCY,
+} from './types';
 import apiData from '../../apiHolder';
 import { categories, products, currencies } from '../../graphql/queries';
 
@@ -27,5 +29,12 @@ export const fetchCurrencies = () => async (dispatch) => {
   dispatch({
     type: FETCH_CURRENCIES,
     payload: data.currencies,
+  });
+};
+
+export const useCurrency = (currency) => (dispatch) => {
+  dispatch({
+    type: USE_CURRENCY,
+    payload: currency,
   });
 };

@@ -16,7 +16,7 @@ class All extends Component {
   }
 
   render() {
-    const { products } = this.props;
+    const { products, currency } = this.props;
 
     return (
       <>
@@ -35,6 +35,7 @@ class All extends Component {
                     products={products}
                     addProductImage={addProductImage}
                     centered={centered}
+                    currency={currency}
                     imageContainer={imageContainer}
                   />
                 </section>
@@ -46,11 +47,6 @@ class All extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-  products: state.products[0]
-  }
-};
+const mapStateToProps = (state) => ({ products: state.products[0], currency: state.useCurrency });
 
 export default connect(mapStateToProps)(All);

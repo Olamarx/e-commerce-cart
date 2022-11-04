@@ -10,7 +10,7 @@ import Products from '../general/Products';
 
 class Clothes extends Component {
   render() {
-    const { products } = this.props;
+    const { products, currency } = this.props;
     return (
       <>
         { !products
@@ -27,6 +27,7 @@ class Clothes extends Component {
                   <Products
                     products={products}
                     addProductImage={addProductImage}
+                    currency={currency}
                     centered={centered}
                     imageContainer={imageContainer}
                   />
@@ -39,6 +40,6 @@ class Clothes extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ products: state.products[1] });
+const mapStateToProps = (state) => ({ products: state.products[1], currency: state.useCurrency });
 
 export default connect(mapStateToProps)(Clothes);

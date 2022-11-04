@@ -9,7 +9,7 @@ class Products extends Component {
 
   render() {
     const {
-      products, addProductImage, centered, imageContainer,
+      products, addProductImage, centered, imageContainer, currency,
     } = this.props;
     const allProducts = !products ? '' : products.products.map((product) => (
       <article className="card" key={product.id}>
@@ -27,7 +27,7 @@ class Products extends Component {
         </div>
         <div>
           <div>{product.name}</div>
-          <div>{`${product.prices[0].currency.symbol}${product.prices[0].amount}`}</div>
+          <div>{`${currency}${product.prices[0].amount}`}</div>
         </div>
       </article>
     ));
