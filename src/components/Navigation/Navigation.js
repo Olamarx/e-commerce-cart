@@ -1,7 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-// import Currencies from './Currencies';
+import Currencies from './Currencies';
 import logo from '../../utils/logo.png';
 import style from './Navigation.module.css';
 
@@ -55,7 +55,7 @@ export default class Navigation extends Component {
             </div>
 
             <div>
-              {/* <Currencies /> */}
+              <Currencies />
             </div>
 
           </nav>
