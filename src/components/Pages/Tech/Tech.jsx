@@ -23,20 +23,17 @@ class Tech extends Component {
             </div>
           )
           : (
-            <div className="all">
-              <div className="products">
-                <section className="container">
-                  <Products
-                    products={products}
-                    addProductImage={addProductImage}
-                    centered={centered}
-                    currency={currency}
-                    // addToCart={addToCart}
-                    imageContainer={imageContainer}
-                  />
-                </section>
-              </div>
-            </div>
+            <main className="main-body">
+              <section className="container">
+                <Products
+                  products={products}
+                  addProductImage={addProductImage}
+                  currency={currency}
+                  centered={centered}
+                  imageContainer={imageContainer}
+                />
+              </section>
+            </main>
           ) }
       </>
     );
