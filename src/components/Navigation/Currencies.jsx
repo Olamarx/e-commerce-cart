@@ -19,6 +19,8 @@ class Currencies extends Component {
   };
 
   render() {
+    const { cart } = this.props;
+
     return (
       <div className={style.select}>
         <select
@@ -42,6 +44,9 @@ class Currencies extends Component {
         </select>
         <div>
           <img src={img} alt="cart" />
+          {
+            cart.length ? (<small>{cart.length}</small>) : null
+          }
         </div>
       </div>
     );
@@ -51,5 +56,6 @@ class Currencies extends Component {
 const mapStateToProps = (state) => ({
   currencies: state.currencies,
   currency: state.useCurrency,
+  cart: state.cart,
 });
 export default connect(mapStateToProps, { useCurrency })(Currencies);

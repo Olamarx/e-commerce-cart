@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { addToCart } from '../../../redux/action/actionCreators';
+import { currencyPrice } from './helper';
 
 class Products extends Component {
   constructor(props) {
@@ -17,13 +18,7 @@ class Products extends Component {
       products, addProductImage, centered, imageContainer, currency, addToCart,
     } = this.props;
 
-    const currencyPrice = (currency, array) => {
-      for (let i = 0; i < array.length; i += 1) {
-        if (array[i].currency.symbol === currency) {
-          return array[i].amount;
-        }
-      }
-    };
+
 
     const allProducts = !products ? '' : products.products.map((product) => (
       <article className="card" key={product.id}>
