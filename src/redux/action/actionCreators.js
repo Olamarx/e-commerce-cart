@@ -39,13 +39,10 @@ export const useCurrency = (currency) => (dispatch) => {
   });
 };
 
-export const addToCart = (item) => (dispatch) => {
-  const product = { ...item, count: 1, sum: item.count * item.prices[0].amount };
-  dispatch({
-    type: ADD_TO_CART,
-    payload: product,
-  });
-};
+export const addToCart = (product) => ({
+  type: ADD_TO_CART,
+  payload: product,
+});
 
 // export const removeFromCart = (item) => (dispatch) => {
 
