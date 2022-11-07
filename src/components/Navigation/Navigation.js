@@ -27,25 +27,25 @@ export default class Navigation extends Component {
                 // className={style.link}
                   style={navLinkStyles}
                 >
-                  WOMEN
+                  All
                 </NavLink>
               </li>
 
               <li>
                 <NavLink
-                  to="/men"
+                  to="/tech"
                   style={navLinkStyles}
                 >
-                  MEN
+                  Tech
                 </NavLink>
               </li>
 
               <li>
                 <NavLink
-                  to="/kids"
+                  to="/clothes"
                   style={navLinkStyles}
                 >
-                  KIDS
+                  Clothes
                 </NavLink>
               </li>
             </ul>

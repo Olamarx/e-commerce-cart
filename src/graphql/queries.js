@@ -1,7 +1,4 @@
-/* eslint-disable import/prefer-default-export */
-import { gql } from '@apollo/client';
-
-export const getAllProducts = gql`
+export const products = `
   query getProducts {
     categories{
       name
@@ -32,6 +29,22 @@ export const getAllProducts = gql`
         brand
         
       }
+    }
+  }
+`;
+
+export const categories = `
+query categories {
+  categories{
+    name
+   }
+}`;
+
+export const currencies = `
+  query getCurrencies {
+    currencies{
+      symbol
+      label
     }
   }
 `;
