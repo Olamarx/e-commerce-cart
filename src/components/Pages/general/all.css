@@ -1,17 +1,20 @@
 .container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat( 3, minmax(500px, 1fr));
   width: 100%;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 355px;
+  margin: auto auto;
 }
 
 .card_image1 {
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 300px;
 }

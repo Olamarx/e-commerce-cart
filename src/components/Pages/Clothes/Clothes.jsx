@@ -3,8 +3,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import '../All/loading.css';
 import Products from '../general/Products';
+import Loading from '../loading/Loading';
 
 class Clothes extends Component {
   render() {
@@ -13,20 +13,13 @@ class Clothes extends Component {
       <>
         { !products
           ? (
-            <div className="ring">
-              Loading
-              <span />
-            </div>
+            <Loading />
           )
           : (
-            <main className="main-body">
-              <section className="container">
-                <Products
-                  products={products}
-                  currency={currency}
-                />
-              </section>
-            </main>
+              <Products
+                products={products}
+                currency={currency}
+              />
           ) }
       </>
     );

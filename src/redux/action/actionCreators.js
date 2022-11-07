@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import {
-  FETCH_CATEGORIES, FETCH_PRODUCTS, FETCH_CURRENCIES, USE_CURRENCY, ADD_TO_CART, REMOVE_FROM_CART,
+  FETCH_CATEGORIES, FETCH_PRODUCTS, FETCH_CURRENCIES, USE_CURRENCY, ADD_TO_CART, REMOVE_FROM_CART, SELECTED_PRODUCT
 } from './types';
 import apiData from '../../apiHolder';
 import { categories, products, currencies } from '../../graphql/queries';
@@ -46,5 +46,10 @@ export const addToCart = (product) => ({
 
 export const removeFromCart = (product) => ({
   type: REMOVE_FROM_CART,
+  payload: product,
+});
+
+export const selectedProduct = (product) => ({
+  type: SELECTED_PRODUCT,
   payload: product,
 });

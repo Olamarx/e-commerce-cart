@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import Products from '../general/Products';
 import '../general/all.css';
-import './loading.css';
+import Loading from '../loading/Loading';
 
 class All extends Component {
   constructor(props) {
@@ -20,20 +20,13 @@ class All extends Component {
       <>
         { !products
           ? (
-            <div className="ring">
-              Loading
-              <span />
-            </div>
+            <Loading />
           )
           : (
-            <main className="main-body">
-              <section className="container">
-                <Products
-                  products={products}
-                  currency={currency}
-                />
-              </section>
-            </main>
+              <Products
+                products={products}
+                currency={currency}
+              />
           ) }
       </>
     );

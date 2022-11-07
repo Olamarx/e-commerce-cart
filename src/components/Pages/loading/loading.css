@@ -33,7 +33,7 @@
   animation: animateC 2s linear infinite;
 }
 
-span {
+.loading {
   display: block;
   position: absolute;
   top: calc(50% - 2px);
@@ -45,7 +45,7 @@ span {
   animation: animate 2s linear infinite;
 }
 
-span::before {
+.loading::before {
   content: '';
   position: absolute;
   width: 16px;
