@@ -3,9 +3,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { imageContainer, centered } from '../general/helper';
-// import { addToCart } from '../../../redux/action/actionCreators';
-import addProductImage from '../../../utils/Common.png';
 import '../All/loading.css';
 import Products from '../general/Products';
 
@@ -27,10 +24,7 @@ class Tech extends Component {
               <section className="container">
                 <Products
                   products={products}
-                  addProductImage={addProductImage}
                   currency={currency}
-                  centered={centered}
-                  imageContainer={imageContainer}
                 />
               </section>
             </main>

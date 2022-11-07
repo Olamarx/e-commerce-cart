@@ -3,8 +3,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { imageContainer, centered } from '../general/helper';
-import addProductImage from '../../../utils/Common.png';
 import Products from '../general/Products';
 import '../general/all.css';
 import './loading.css';
@@ -32,10 +30,7 @@ class All extends Component {
               <section className="container">
                 <Products
                   products={products}
-                  addProductImage={addProductImage}
                   currency={currency}
-                  centered={centered}
-                  imageContainer={imageContainer}
                 />
               </section>
             </main>

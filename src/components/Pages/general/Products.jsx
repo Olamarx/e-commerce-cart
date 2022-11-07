@@ -5,7 +5,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { addToCart } from '../../../redux/action/actionCreators';
-import { currencyPrice } from './helper';
+import { currencyPrice, centered, imageContainer } from './helper';
+import addProductImage from './Common.png';
 
 class Products extends Component {
   constructor(props) {
@@ -15,10 +16,8 @@ class Products extends Component {
 
   render() {
     const {
-      products, addProductImage, centered, imageContainer, currency, addToCart,
+      products, currency, addToCart,
     } = this.props;
-
-
 
     const allProducts = !products ? '' : products.products.map((product) => (
       <article className="card" key={product.id}>
@@ -32,7 +31,9 @@ class Products extends Component {
               onClick={() => addToCart({
                 ...product,
                 count: 1,
-                sum: product.count * product.prices[0].amount,
+                selectedCurrency: currency,
+                currencyPrice: currencyPrice(currency, product.prices),
+                sum: 1 * parseFloat(currencyPrice(currency, product.prices)),
               })}
             />
           )
