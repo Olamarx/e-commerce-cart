@@ -28,7 +28,7 @@ class Products extends Component {
             <img
               src={addProductImage}
               alt={product.name}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: 'pointer', position: 'relative', right: '100px', top: '25px', }}
               onClick={() => addToCart({
                 ...product,
                 count: 1,
