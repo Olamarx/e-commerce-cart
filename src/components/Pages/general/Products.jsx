@@ -46,40 +46,42 @@ class Products extends Component {
        <div className="article-child">
         <div style={imageContainer}>
         {product.inStock ? (
-          <NavLink 
-          to={`/product/${product.id}`}>
+          
             <img
             className="card_image1"
             src={product.gallery[0]}
             alt={product.name}
-            onClick={() => {
-              setLocalStore(product)
-              selectedPro(product)
-            }}
             />
-            </NavLink>
+
         ) : (<img
           className="card_image1"
           src={product.gallery[0]}
           alt={product.name}
           onClick={() => {
-            setLocalStore(product)
-            selectedPro(product)
+            // setLocalStore(product)
+            // selectedPro(product)
           }}
           />)}
           {product.inStock ? (
+            <NavLink 
+            to={`/product/${product.id}`}>
             <img
+              onClick={() => {
+                setLocalStore(product)
+                selectedPro(product)
+            }}
               src={addProductImage}
               alt={product.name}
               style={{ cursor: 'pointer', position: 'relative', right: '100px', top: '25px', }}
-              onClick={() => addToCart({
-                ...product,
-                count: 1,
-                selectedCurrency: currency,
-                currencyPrice: currencyPrice(currency, product.prices),
-                sum: 1 * parseFloat(currencyPrice(currency, product.prices)),
-              })}
+              // onClick={() => addToCart({
+              //   ...product,
+              //   count: 1,
+              //   selectedCurrency: currency,
+              //   currencyPrice: currencyPrice(currency, product.prices),
+              //   sum: 1 * parseFloat(currencyPrice(currency, product.prices)),
+              // })}
             />
+            </NavLink>
           )
             : null}
           {!product.inStock ? (<div style={centered}>Out of stock</div>) : null}
