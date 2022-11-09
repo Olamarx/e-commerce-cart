@@ -63,10 +63,32 @@ class Products extends Component {
           }}
           />)}
           {product.inStock ? (
-            <NavLink 
-            to={`/product/${product.id}`}>
+            <>
+            { product.attributes.length ? (
+              <NavLink 
+              to={`/product/${product.id}`}>
+              <img
+                onClick={() => {
+                  setLocalStore(product)
+                  selectedPro(product)
+              }}
+                src={addProductImage}
+                alt={product.name}
+                style={{ cursor: 'pointer', position: 'relative', right: '100px', top: '25px', }}
+                // onClick={() => }
+              />
+              </NavLink>
+            ) :
+            (
             <img
               onClick={() => {
+                addToCart({
+                    ...product,
+                    count: 1,
+                    selectedCurrency: currency,
+                    currencyPrice: currencyPrice(currency, product.prices),
+                    sum: 1 * parseFloat(currencyPrice(currency, product.prices)),
+                  })
                 setLocalStore(product)
                 selectedPro(product)
             }}
@@ -81,7 +103,9 @@ class Products extends Component {
               //   sum: 1 * parseFloat(currencyPrice(currency, product.prices)),
               // })}
             />
-            </NavLink>
+            )
+            }
+            </>
           )
             : null}
           {!product.inStock ? (<div style={centered}>Out of stock</div>) : null}

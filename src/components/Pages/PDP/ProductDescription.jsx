@@ -1,61 +1,120 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './options.css';
 
-import { Sizes, Span, IndSize, Color, RightContent, AllImages, PDPBody, SmallImage, LeftImages } from './Style'
-
+import { Content, Main, Button, Sizes, Span, IndSize, Color, RightContent, AllImages, PDPBody, SmallImage, LeftImages } from './Style'
+import { currencyPrice } from '../general/helper';
 class ProductDescription extends Component {
-  render() {
-    const { product } =  this.props;
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: this.props.product.gallery[0],
+      isActive: false,
+      // image: 
+
+    };
+  }
+
+  
+  // const cartItem = () => {
+    //   this.setState({
+      
+      //   })
+      // }
+      
+      
+      render() {
+    
+        const handleClick = (product) => {
+          console.log(product)
+          this.setState({isActive: true})
+        };
+        const handleSelectedImage = (img) => {
+          // console.log(product)
+          this.setState({image: img})
+        };
+
+    const { product, currency } =  this.props;
+    
     return (
+      <Main>
       <PDPBody>
         <AllImages>
           <LeftImages>
             {product.gallery && product.gallery.map((img) => (
-              <SmallImage  src={img} alt={img} key={img}/>
+              <SmallImage
+                src={img}
+                alt={img}
+                key={img}
+                style={{cursor: 'pointer'}}
+                onClick={() => handleSelectedImage(img)}
+                />
             ))}
           </LeftImages>
-            <img src={product.gallery[0]} alt={product.gallery[0]} />
+            <img
+            style={{ height: '600px', width: '500px',}}
+            src={this.state.image} alt={product.gallery[0]} />
         </AllImages>
+
         <RightContent>
-          {/* <div dangerouslySetInnerHTML={{ __html: value }}/> */}
               <h3>{product.name}</h3>
               
-              
+          
               { product.attributes && product.attributes.map((attr) => (
-              <React.Fragment key={attr.id}>
 
+              <React.Fragment key={attr.id}>
                 {attr.items.length && attr.type !== 'swatch' ? (
-                <>
+                <div>
                   <h3>{attr.name}:</h3>
-                  <Sizes>
+                  <ul className="options-items">
                     { attr.items.map((item) => (
-                  <IndSize key={item.id}>{item.displayValue}</IndSize>
+                  <li key={item.id}>
+                    <input type="radio" id={item.id}  name="amount" />
+                    <label htmlFor={item.id}>{item.displayValue}</label>
+                    </li>
                     ))
                     }
-                  </Sizes>
-                </>
+                  </ul>
+                </div>
               ) : null}
 
                 {attr.type && attr.type === 'swatch' ? (
-                <>
+                <div>
                   <h3>{attr.name}:</h3>
                 <Color>
                 { attr.items.map((color) => (
                   <Span displayValue={color.displayValue} key={color.id}></Span>
-                ))
-              }
-              </Color>
-                    </>
+                  ))
+                }
+                </Color>
+                    </div>
                     ) : null}
-                  </React.Fragment>
+              </React.Fragment>
               
                 )) }
+              <div>
+              { product.prices && (
+                <>
+                <h3>Price:</h3>
+                <span>{`${currency} ${currencyPrice(currency, product.prices)}`}
+                </span>
+                </>
+              )
+              
+              }
+              </div>
+
+              <Button type='button'>ADD TO CART</Button>
+
+        <Content dangerouslySetInnerHTML={{ __html: product.description }}/>
+
         </RightContent>
-      </PDPBody>
+        </PDPBody>
+      </Main>
     )
   }
 }
 
-const mapStateToProps = (state) => ({ product: state.selected });
+const mapStateToProps = (state) => ({ product: state.selected, currency: state.useCurrency });
 
 export default connect(mapStateToProps)(ProductDescription);
