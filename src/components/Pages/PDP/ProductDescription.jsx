@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './options.css';
+// import './options.css';
 
-import { Content, Main, Button, Sizes, Span, IndSize, Color, RightContent, AllImages, PDPBody, SmallImage, LeftImages } from './Style'
+import { Ul, Content, Main, Button, Sizes, Span, IndSize, Color, RightContent, AllImages, PDPBody, SmallImage, LeftImages } from './Style'
 import { currencyPrice } from '../general/helper';
 class ProductDescription extends Component {
   constructor(props) {
@@ -13,6 +13,10 @@ class ProductDescription extends Component {
       // image: 
 
     };
+
+    
+    this.handleSubmit = this.handleSubmit.bind(this);
+
   }
 
   
@@ -21,6 +25,11 @@ class ProductDescription extends Component {
       
       //   })
       // }
+
+      handleSubmit(event) {
+        event.preventDefault();
+        console.log(event.target.value);
+      }
       
       
       render() {
@@ -56,39 +65,56 @@ class ProductDescription extends Component {
             src={this.state.image} alt={product.gallery[0]} />
         </AllImages>
 
+
+
         <RightContent>
               <h3>{product.name}</h3>
+<form
+onSubmit={this.handleSubmit}
+style={{ display: 'flex', flexDirection: 'column', gap: '30px', }}
+>
               
+              {/* <form>
+  <label>
+    Name:
+    <input type="text" name="name" />
+  </label>
+  <input type="submit" value="Submit" /> */}
+
           
               { product.attributes && product.attributes.map((attr) => (
 
-              <React.Fragment key={attr.id}>
+                <React.Fragment key={attr.id}>
+                <Ul>
                 {attr.items.length && attr.type !== 'swatch' ? (
-                <div>
+                  <>
                   <h3>{attr.name}:</h3>
-                  <ul className="options-items">
                     { attr.items.map((item) => (
                   <li key={item.id}>
-                    <input type="radio" id={item.id}  name="amount" />
+                    <input type="radio" id={item.id}  name={attr.id} required/>
                     <label htmlFor={item.id}>{item.displayValue}</label>
                     </li>
-                    ))
-                    }
-                  </ul>
-                </div>
-              ) : null}
-
-                {attr.type && attr.type === 'swatch' ? (
-                <div>
+                    )
+                    )
+                  }
+                  </>
+                  ) : 
+                  
+                  (<>
                   <h3>{attr.name}:</h3>
-                <Color>
-                { attr.items.map((color) => (
-                  <Span displayValue={color.displayValue} key={color.id}></Span>
+                
+                  { attr.items.map((color) => (
+                  <li key={color.id}>
+                    <input style={{backgroundColor: `${color.displayValue}`, width: '20px', height: '20px', }} type='radio' id={color.id} name={attr.id} required/>
+                    <label htmlFor={color.id}/>
+                </li>
                   ))
                 }
-                </Color>
-                    </div>
-                    ) : null}
+                </>)
+
+                  }
+                  </Ul>
+
               </React.Fragment>
               
                 )) }
@@ -96,19 +122,22 @@ class ProductDescription extends Component {
               { product.prices && (
                 <>
                 <h3>Price:</h3>
-                <span>{`${currency} ${currencyPrice(currency, product.prices)}`}
-                </span>
+                <input type='text'
+                style={{ border: 'none', outline: 'none', }}
+                value={`${currency} ${currencyPrice(currency, product.prices)}`} readOnly/>
                 </>
               )
               
               }
               </div>
 
-              <Button type='button'>ADD TO CART</Button>
+              <Button type='submit' value="ADD TO CART" />
+        </form>
 
         <Content dangerouslySetInnerHTML={{ __html: product.description }}/>
 
         </RightContent>
+
         </PDPBody>
       </Main>
     )

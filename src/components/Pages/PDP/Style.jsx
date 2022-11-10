@@ -53,7 +53,7 @@ export const Span = styled.div`
     }
 `
 
-export const Button = styled.button`
+export const Button = styled.input`
     height: 50px;
     width: 150px;
     background-color: rgb(72, 246, 72);
@@ -84,6 +84,51 @@ export const IndSize = styled.input`
  }
 `
 
-// .square {
-//     : #555;
-//   }
+export const Ul = styled.ul`
+    list-style-type: none;
+
+
+     li {
+        float: left;
+        
+        margin: 0 5px 0 0;
+        width: 80px;
+        height: 40px;
+        position: relative;
+      }
+      
+       label,
+       input {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+      
+       input[type="radio"] {
+        opacity: 0.01;
+        z-index: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+       input[type="radio"]:checked+label,
+      .Checked+label {
+        color: white;
+        background: black;
+      }
+      
+       label {
+        padding: 5px;
+        border: 1px solid #CCC;
+        cursor: pointer;
+        z-index: 90;
+      }
+      
+       label:hover {
+        background: #DDD;
+      }
+`
