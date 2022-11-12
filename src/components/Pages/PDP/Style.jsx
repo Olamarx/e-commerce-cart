@@ -132,3 +132,48 @@ export const Ul = styled.ul`
         background: #DDD;
       }
 `
+
+export const MainBodyAttri = styled.div`
+     display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+`
+
+export const AttriLI = styled.div`
+display: flex;
+`
+
+export const FormLike = styled.div`
+    display: inline-block;
+
+    &:not(:last-child) {
+    margin-right: 20px;
+  }
+`
+
+export const AttriH3 = styled.h3`
+font-family: Roboto Condensed;
+font-weight: 700;
+font-size: 18px;
+line-height: 18px;
+margin-bottom: 8px;
+`
+export const Input = styled.input`
+display: none;
+
+    &:disabled + label {
+        background: #efefef;
+        color: #666;
+        cursor: default;
+    }
+
+    &:checked + label {
+        border: 5px solid grey;
+      }
+`
+
+export const Price = styled.p`
+font-weight: 700;
+font-size: 24px;
+line-height: 18px;
+`
