@@ -53,16 +53,6 @@ export const Span = styled.div`
     }
 `
 
-export const Button = styled.input`
-    height: 50px;
-    width: 150px;
-    background-color: rgb(72, 246, 72);
-    cursor: pointer;
-    outline: none;
-    border: none;
-    border-radius: 2px;
-`
-
 export const Content = styled.div`
     height: fit-content;
     width: 300px;
@@ -176,4 +166,19 @@ export const Price = styled.p`
 font-weight: 700;
 font-size: 24px;
 line-height: 18px;
+`
+
+export const Button = styled.button`
+display: flex;
+justify-content: center;
+align-items: center;
+box-sizing: border-box;
+width: 292px;
+height: 52px;
+margin: 40px auto;
+color: #ffffff;
+background: rgb(72, 246, 72);
+border: none;
+cursor: pointer;
+transition: all 250ms;
 `
