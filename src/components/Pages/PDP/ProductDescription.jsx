@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { v4 as uuidv4 } from "uuid";
 import './options.css';
 
-import { Price, Input, FormLike, AttriLI, AttriH3, MainBodyAttri, Main, AllImages, PDPBody, SmallImage, LeftImages } from './Style'
+import { Button, Price, Input, FormLike, AttriLI, AttriH3, MainBodyAttri, Main, AllImages, PDPBody, SmallImage, LeftImages } from './Style'
 import { currencyPrice } from '../general/helper';
 class ProductDescription extends Component {
   constructor(props) {
@@ -20,17 +20,8 @@ class ProductDescription extends Component {
 
 
     };    
-    // this.handleData = this.handleData.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
-
   }
 
-  
-  // const cartItem = () => {
-    //   this.setState({
-      
-      //   })
-      // }
 
       setData = (e) => {
         const { name, value } = e.target;
@@ -141,6 +132,14 @@ class ProductDescription extends Component {
                     <Price>
                       {`${currency} ${currencyPrice(currency, product.prices)}`}
                     </Price>
+
+                    <Button       
+                 type="button"
+                    onClick={this.onSubmitProduct}
+                    disabled={!product.inStock && true}
+                  >
+                    {!product.inStock ? "OUT OF STOCK" : "ADD TO CART"}
+                  </Button>
               </div>
 
 
@@ -217,8 +216,8 @@ style={{ display: 'flex', flexDirection: 'column', gap: '30px', }}
         <Content dangerouslySetInnerHTML={{ __html: product.description }}/>
 
         </RightContent> */}
-
         </PDPBody>
+
       </Main>
     )
   }
