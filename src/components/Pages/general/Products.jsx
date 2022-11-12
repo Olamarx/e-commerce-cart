@@ -53,16 +53,16 @@ class Products extends Component {
             alt={product.name}
             />
 
-        ) : (<img
-          className="card_image1"
-          src={product.gallery[0]}
-          alt={product.name}
-          onClick={() => {
-            // setLocalStore(product)
-            // selectedPro(product)
-          }}
-          />)}
-          {product.inStock ? (
+        )
+          :
+        (
+          <img
+            className="card_image1"
+            src={product.gallery[0]}
+            alt={product.name}
+          />
+        )
+      }
             <>
             { product.attributes.length ? (
               <NavLink 
@@ -75,7 +75,6 @@ class Products extends Component {
                 src={addProductImage}
                 alt={product.name}
                 style={{ cursor: 'pointer', position: 'relative', right: '100px', top: '25px', }}
-                // onClick={() => }
               />
               </NavLink>
             ) :
@@ -106,8 +105,6 @@ class Products extends Component {
             )
             }
             </>
-          )
-            : null}
           {!product.inStock ? (<div style={centered}>Out of stock</div>) : null}
         </div>
         <div>
