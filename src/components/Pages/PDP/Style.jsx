@@ -55,7 +55,7 @@ export const Span = styled.div`
 
 export const Content = styled.div`
     height: fit-content;
-    width: 300px;
+    width: 400px;
 `
 
 
