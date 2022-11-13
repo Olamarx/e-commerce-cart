@@ -18,7 +18,7 @@ class Products extends Component {
   render() {
 
     const setLocalStore = (product) => {
-      product.inStock ? localStorage.setItem('selected_item', JSON.stringify({
+      product ? localStorage.setItem('selected_item', JSON.stringify({
         ...product,
         count: 1,
         selectedCurrency: currency,
@@ -81,13 +81,13 @@ class Products extends Component {
             (
             <img
               onClick={() => {
-                addToCart({
-                    ...product,
-                    count: 1,
-                    selectedCurrency: currency,
-                    currencyPrice: currencyPrice(currency, product.prices),
-                    sum: 1 * parseFloat(currencyPrice(currency, product.prices)),
-                  })
+                product.inStock ? addToCart({
+                  ...product,
+                  count: 1,
+                  selectedCurrency: currency,
+                  currencyPrice: currencyPrice(currency, product.prices),
+                  sum: 1 * parseFloat(currencyPrice(currency, product.prices)),
+                }) : null
                 setLocalStore(product)
                 selectedPro(product)
             }}
