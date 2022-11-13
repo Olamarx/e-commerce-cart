@@ -7,21 +7,22 @@ const addToCartReducer = (state = init, action) => {
   const newData = action.payload;
   switch (action.type) {
     case ADD_TO_CART:
-      for (let i = 0; i < state.length; i += 1) {
-        if (state[i].id === newData.id) {
-          return [...state];
-        }
-      }
       return [...state, action.payload];
-
-    case REMOVE_FROM_CART:
-      console.log(newData)
-      const filter = state.filter((product) => product.id !== newData.id);
+      
+      case REMOVE_FROM_CART:
+        console.log(newData)
+        const filter = state.filter((product) => product.id !== newData.id);
       return [...filter];
-
-    default:
-      return state;
+      
+      default:
+        return state;
   }
 };
 
 export default addToCartReducer;
+
+// for (let i = 0; i < state.length; i += 1) {
+//   if (state[i].id === newData.id) {
+//     return [...state];
+//   }
+// }
