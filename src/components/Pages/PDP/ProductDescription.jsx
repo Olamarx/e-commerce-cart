@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { v4 as uuidv4 } from "uuid";
 import './options.css';
 
-import { Content, Button, Price, Input, FormLike, AttriLI, AttriH3, MainBodyAttri, Main, AllImages, PDPBody, SmallImage, LeftImages } from './Style'
+import { Input, FormLike, AttriLI, AttriH3, MainBodyAttri, Main, PDPBody  } from './Style'
+import PriceAndButton from './PriceAndButton';
+import Images from './Images';
 import { currencyPrice } from '../general/helper';
 import { addToCart } from '../../../redux/action/actionCreators';
 import Notification from './Notification';
@@ -20,7 +22,6 @@ class ProductDescription extends Component {
         "Touch ID in keyboard": "",
     };    
   }
-
 
       setData = (e) => {
         const { name, value } = e.target;
@@ -58,20 +59,15 @@ class ProductDescription extends Component {
           currencyPrice: currencyPrice(currency, product.prices),
           sum: 1 * parseFloat(currencyPrice(currency, product.prices)),
         })
+        this.setState({ set: false })
         } else {
-          // this.setState({ set: true });
-          setTimeOut(() => this.setState({ set: true}), 3000)
+          this.setState({ set: true });
         }
       }
       
       
       render() {
-        
-        // const { attributes } = this.props
-        
-
         const handleSelectedImage = (img) => {
-          // console.log(product)
           this.setState({image: img})
         };
         const { set } = this.state
@@ -81,22 +77,11 @@ class ProductDescription extends Component {
       <>
       <Main>
       <PDPBody>
-        <AllImages>
-          <LeftImages>
-            {product.gallery && product.gallery.map((img) => (
-              <SmallImage
-                src={img}
-                alt={img}
-                key={img}
-                style={{cursor: 'pointer'}}
-                onClick={() => handleSelectedImage(img)}
-                />
-            ))}
-          </LeftImages>
-            <img
-            style={{ height: '600px', width: '500px',}}
-            src={this.state.image} alt={product.gallery[0]} />
-        </AllImages>
+        <Images
+          product={product}
+          handleSelectedImage={handleSelectedImage}
+          stateImage={this.state.image}
+          />
 
 <div>
           {set ? (<Notification message="Kindly select out of the options" />) : null }
@@ -139,25 +124,12 @@ class ProductDescription extends Component {
                   </AttriLI>
                 </MainBodyAttri>
               ))}
-                        <AttriH3>
-                      PRICE:
-                    </AttriH3>
-                    <Price>
-                      {`${currency} ${currencyPrice(currency, product.prices)}`}
-                    </Price>
-
-                    <Button       
-                 type="button"
-                    onClick={() => {
-                      this.handleSubmit(product.attributes, product, currency, addToCart)
-                      console.log(this.state);
-                      // console.log(this.state.setData);
-                    }}
-                    disabled={!inStock}
-                  >
-                    {!product.inStock ? "OUT OF STOCK" : "ADD TO CART"}
-                  </Button>
-                  <Content dangerouslySetInnerHTML={{ __html: product.description }}/>
+ <PriceAndButton 
+  currency={currency}
+  product={product}
+  addToCart={addToCart}
+  handleSubmit={this.handleSubmit}
+ />
               </div>
         </PDPBody>
 
