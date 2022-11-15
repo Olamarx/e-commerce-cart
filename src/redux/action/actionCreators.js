@@ -44,10 +44,10 @@ export const addToCart = (product) => ({
   payload: product,
 });
 
-export const removeFromCart = (product) => ({
-  type: REMOVE_FROM_CART,
-  payload: product,
-});
+// export const removeFromCart = (product) => ({
+//   type: REMOVE_FROM_CART,
+//   payload: product,
+// });
 
 export const selectedProduct = (product) => ({
   type: SELECTED_PRODUCT,
