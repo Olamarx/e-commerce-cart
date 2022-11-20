@@ -9,7 +9,7 @@ const addToCartReducer = (state = init, action) => {
   const newData = action.payload;
   switch (action.type) {
     case ADD_TO_CART:
-      checkData(state, action)
+      // checkData(state, action)
 
       case REMOVE_FROM_CART:
         console.log(newData)
@@ -22,9 +22,3 @@ const addToCartReducer = (state = init, action) => {
 };
 
 export default addToCartReducer;
-
-// for (let i = 0; i < state.length; i += 1) {
-//   if (state[i].id === newData.id) {
-//     return [...state];
-//   }
-// }
