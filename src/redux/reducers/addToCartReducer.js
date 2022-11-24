@@ -9,7 +9,7 @@ const addToCartReducer = (state = init, action) => {
     case ADD_TO_CART:
       for (let i = 0; i < state.length; i += 1) {
         if (state[i].id === newData.id) {
-          return [...state];
+          return [...state, ...newData];
         }
       }
       return [...state, action.payload];
