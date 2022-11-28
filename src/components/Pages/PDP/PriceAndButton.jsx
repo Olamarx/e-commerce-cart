@@ -16,9 +16,9 @@ class PriceAndButton extends Component {
                       {`${currency} ${currencyPrice(currency, product.prices)}`}
                     </Price>
 
-                    <Button       
-                 type="button"
-                    onClick={() => {
+                    <Button
+                      type="button"
+                      onClick={() => {
                       handleSubmit(product.attributes, product, currency, addToCart)
                     }}
                     disabled={!inStock}

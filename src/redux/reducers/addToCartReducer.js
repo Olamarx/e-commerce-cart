@@ -5,11 +5,10 @@ import { ADD_TO_CART, REMOVE_FROM_CART } from '../action/types';
 
 const init = [];
 const addToCartReducer = (state = init, action) => {
-  // console.log(state);
   const newData = action.payload;
   switch (action.type) {
     case ADD_TO_CART:
-      // checkData(state, action)
+      return [...state, newData]
 
       case REMOVE_FROM_CART:
         console.log(newData)

@@ -4,7 +4,9 @@ class Notification extends Component {
   render() {
     const { message } = this.props
     return (
-      <h3 style={{ color: 'red' }}>{message}</h3>
+      <h3 
+        style={message.includes('Successfully') ? { color:'green' } : { color:'red' }}
+      >{message}</h3>
     )
   }
 }

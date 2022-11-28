@@ -6,7 +6,7 @@ import './options.css';
 import { Input, FormLike, AttriLI, AttriH3, MainBodyAttri, Main, PDPBody  } from './Style'
 import PriceAndButton from './PriceAndButton';
 import Images from './Images';
-import { currencyPrice } from '../general/helper';
+import { addTheProduct } from '../general/helper';
 import { addToCart } from '../../../redux/action/actionCreators';
 import Notification from './Notification';
 class ProductDescription extends Component {
@@ -15,62 +15,43 @@ class ProductDescription extends Component {
     this.state = {
       image: this.props.product.gallery[0],
       set: false,
-      "Color": "",
-        "Size": "",
-        "Capacity": "",
-        "With USB 3 ports": "",
-        "Touch ID in keyboard": "",
+      data: {},
+      notify: "",
     };    
   }
 
       setData = (e) => {
         const { name, value } = e.target;
-        if (name === "Size") {
-          this.setState({ Size: value });
-        } else if (name === "Color") {
-          this.setState({ color: value });
-        } else if (name === "Capacity") {
-          this.setState({ Capacity: value });
-        } else if (name === "With USB 3 ports") {
-          this.setState({ "With USB 3 ports": value });
-        } else if (name === "Touch ID in keyboard") {
-          this.setState({ "Touch ID in keyboard": value });
-        }
+            this.setState( prev => ({
+              data: {
+                ...prev.data, 
+                [name]:  value,
+              }
+            }));
       };
       
       handleSubmit = (attributes, product, currency, addToCart) => {
-        const { state } = this
-        const data = [state["Touch ID in keyboard"], state['Size'], state['Capacity'], state["With USB 3 ports"], state["Color"]]
-        const filter = data.filter((datum) => datum !== "")
-        const attr =  {
-        "Color": state["Color"],
-        "Size": state['Size'],
-        "Capacity": state['Capacity'],
-        "With USB 3 ports": state["With USB 3 ports"],
-        "Touch ID in keyboard": state["Touch ID in keyboard"],
-      }
-        if (filter.length === attributes.length) {
-        console.log(filter);
-        addToCart({
-          ...product,
-          count: 1,
-          selectedAttr: attr,
-          selectedCurrency: currency,
-          currencyPrice: currencyPrice(currency, product.prices),
-          sum: 1 * parseFloat(currencyPrice(currency, product.prices)),
-        })
-        this.setState({ set: false })
+        const { data } = this.state
+        const { cart } = this.props
+
+        const objectLength = Object.keys(data).length
+        const attributeLength = product.attributes.length
+        const calc = objectLength < 1 ? 0 : attributeLength - objectLength
+        // console.log(objectLength, attributeLength);
+        if (objectLength === attributeLength) {
+          addTheProduct(addToCart, cart, product, currency, data)
+          this.setState({notify: "Successfully Added to cart."})
         } else {
-          this.setState({ set: true });
+          this.setState({notify: `Kindly select all product attributes of your choice. You have selected ${calc} out of ${attributeLength}`})
         }
+
       }
-      
       
       render() {
         const handleSelectedImage = (img) => {
           this.setState({image: img})
         };
-        const { set } = this.state
+        const { notify } = this.state
     const { product, currency, addToCart } =  this.props;
     const { attributes, inStock } = product
     return (
@@ -82,9 +63,8 @@ class ProductDescription extends Component {
           handleSelectedImage={handleSelectedImage}
           stateImage={this.state.image}
           />
-
 <div>
-          {set ? (<Notification message="Kindly select out of the options" />) : null }
+          {notify && (<Notification message={notify} />)}
               {attributes && attributes.map((attribute) => (
               <MainBodyAttri key={attribute.name}>
                   <AttriH3>{attribute.name.toUpperCase()}:</AttriH3>
@@ -119,7 +99,6 @@ class ProductDescription extends Component {
                     </React.Fragment>
                     )
                         }
-                    
                     )}
                   </AttriLI>
                 </MainBodyAttri>
@@ -139,6 +118,6 @@ class ProductDescription extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ product: state.selected, currency: state.useCurrency });
+const mapStateToProps = (state) => ({ product: state.selected, currency: state.useCurrency, cart:state.cart });
 
 export default connect(mapStateToProps, { addToCart })(ProductDescription);

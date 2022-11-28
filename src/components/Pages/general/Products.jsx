@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import { addToCart, selectedProduct } from '../../../redux/action/actionCreators';
-import { currencyPrice, centered, imageContainer } from './helper';
+import { currencyPrice, centered, imageContainer, addTheProduct } from './helper';
 import addProductImage from './Common.png';
 
 class Products extends Component {
@@ -38,7 +38,7 @@ class Products extends Component {
     }
 
     const {
-      products, currency, addToCart, selectedProduct
+      products, currency, addToCart, selectedProduct, cart
     } = this.props;
 
     const allProducts = !products ? '' : products.products.map((product) => (
@@ -81,13 +81,7 @@ class Products extends Component {
             (
             <img
               onClick={() => {
-                product.inStock ? addToCart({
-                  ...product,
-                  count: 1,
-                  selectedCurrency: currency,
-                  currencyPrice: currencyPrice(currency, product.prices),
-                  sum: 1 * parseFloat(currencyPrice(currency, product.prices)),
-                }) : null
+                product.inStock && addTheProduct(addToCart, cart, product, currency)
                 setLocalStore(product)
                 selectedPro(product)
             }}
@@ -105,7 +99,7 @@ class Products extends Component {
             )
             }
             </>
-          {!product.inStock ? (<div style={centered}>Out of stock</div>) : null}
+          {!product.inStock && (<div style={centered}>Out of stock</div>)}
         </div>
         <div>
           <p>{product.name}</p>
@@ -124,4 +118,6 @@ class Products extends Component {
   }
 }
 
-export default connect(null, { addToCart, selectedProduct })(Products);
+const mapStateToProps = (state) => ({ cart:state.cart });
+
+export default connect(mapStateToProps, { addToCart, selectedProduct })(Products);
