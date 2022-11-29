@@ -25,26 +25,9 @@ const isObject = (object) => {
   return object != null && typeof object === 'object';
 }
 
-const isEqual = (enteringObj, cartObj) => {
-  let firstProp = Object.getOwnPropertyNames(enteringObj);
-  let secondProp = Object.getOwnPropertyNames(cartObj);
-  if (firstProp.length != secondProp.length) {
-    // console.log(false)
-      return false;
-  }
-  for (let i = 0; i < firstProp.length; i++) {
-      let val1 = enteringObj[firstProp[i]];
-      let val2 = cartObj[firstProp[i]];
-      let isObjects = isObject(val1) && isObject(val2);
-      if (isObjects && !isEqual(val1, val2) || !isObjects && val1 !== val2) {
-        // console.log(false)
-          return false;
-      }
-  }
-// console.log(true)
-
-  return true;
-}
+      // const isEqual = (enteringObj, cartObj, addToCart, obj) => {
+        
+      // }
 
 
 
@@ -59,59 +42,57 @@ const addTheProduct  = (addToCart, products, product, currency, data) => {
     currencyPrice: currencyPrice(currency, product.prices),
     sum: 1 * parseFloat(currencyPrice(currency, product.prices)),
 }
-
+// const filterToChec = products.filter((product) => product.id === obj.id);
+console.log("Let us start");
 if (!products.length){
+  console.log("Nothing in cart");
+  return addToCart(obj)
+} 
+
+const filter = obj.selectedAttr && products.filter((product) => product.id === obj.id);
+const filterToCheckId = products.filter((product) => product.id === obj.id);
+
+if ((filterToCheckId.length < 1) && !obj.selectedAttr) {
+  // console.log("This item does not have attributes and it is not in the cart", filterToChec);
   return addToCart(obj)
 }
 
-const filter = products.filter((product) => product.id === obj.id);
+if((filterToCheckId.length === 1) && !obj.selectedAttr) return
 
-if (!filter.length) return addToCart(obj)
+console.log("I skipped it", filterToCheckId.length, obj.attributes);
 
+// if (!obj.attributes && !filterToCheckId) return addToCart(obj) 
+// if (!filter && !filterToCheckId)
+  for (let i = 0; i < filter.length; i++) {
 
-// if  (products.length){
-//     for (let i = 0; i < products.length; i++) {
-   
-//       if (!product.attributes && (product.id !== products[i].id)) {
-//         console.log('Hello');
-//         return addToCart(obj)
-//       }
+      const cartIndObjAttr = filter[i].selectedAttr
+      const enteringObjAttr = obj.selectedAttr
+      const cartIndObjAttrKeys = Object.keys(cartIndObjAttr).sort()
+      const enteringObjAttrKeys = Object.keys(enteringObjAttr).sort()
 
-//       const cartIndObjAttr = products[i].selectedAttr
-//       const enteringObjAttr = obj.selectedAttr
-   
-//       const isEqual = () => {
-//           let firstProp = Object.getOwnPropertyNames(enteringObjAttr);
-//           let secondProp = Object.getOwnPropertyNames(cartIndObjAttr);
-   
-//           if (firstProp.length !== secondProp.length) {
-//               return false;
-//           }
-//           for (let i = 0; i < firstProp.length; i++) {
-//               let val1 = enteringObjAttr[firstProp[i]];
-//               let val2 = cartIndObjAttr[firstProp[i]];
-//               let isObjects = isObject(val1) && isObject(val2);
-   
-//               if (isObjects && !isEqual() || !isObjects && val1 !== val2) {
-//                   return false;
-//               }
-   
-//             }
-//         return addToCart(obj)
-//         }
-//         isEqual()
-//       }
-//   } else {
-//       console.log('does not have any products before')
-//       return addToCart(obj)
-//     } 
+      if (cartIndObjAttrKeys.length !== enteringObjAttrKeys.length) {
+        return "Select All options"
+      }
+
+      for (let objKey of cartIndObjAttrKeys) {
+        if (cartIndObjAttr[objKey] !== enteringObjAttr[objKey]) {
+          console.log("Item not in cart");
+          console.log(cartIndObjAttr, enteringObjAttr, filter);
+          return addToCart(obj)
+        }
+        // else if (cartIndObjAttrKeys[objKey] === enteringObjAttrKeys[objKey]) {
+        //   console.log("Item in cart already");
+        //   return "Item in cart already"
+        // }
+      }
+
+      console.log("Item already in the cart");
+      console.log(cartIndObjAttr, enteringObjAttr);
+      // return addToCart(obj)
+      return
   }
-// }
-//  else {
-//   addTheProduct(obj)
-// }
-   
-// }
+  }
+
 // Because I have filtered it, I wont check it will have attributes and it would enhance the scalability
 
 
