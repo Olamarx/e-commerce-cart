@@ -77,7 +77,7 @@ console.log("I skipped it", filterToCheckId.length, obj.attributes);
       for (let objKey of cartIndObjAttrKeys) {
         if (cartIndObjAttr[objKey] !== enteringObjAttr[objKey]) {
           console.log("Item not in cart");
-          console.log(cartIndObjAttr, enteringObjAttr, filter);
+          console.log(cartIndObjAttr[objKey], enteringObjAttr[objKey]);
           return addToCart(obj)
         }
         // else if (cartIndObjAttrKeys[objKey] === enteringObjAttrKeys[objKey]) {
