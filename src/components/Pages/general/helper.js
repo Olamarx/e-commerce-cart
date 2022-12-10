@@ -42,15 +42,21 @@ const addTheProduct  = (addToCart, products, product, currency, data) => {
     currencyPrice: currencyPrice(currency, product.prices),
     sum: 1 * parseFloat(currencyPrice(currency, product.prices)),
 }
-// const filterToChec = products.filter((product) => product.id === obj.id);
-console.log("Let us start");
 if (!products.length){
-  console.log("Nothing in cart");
   return addToCart(obj)
-} 
+}
 
-const filter = obj.selectedAttr && products.filter((product) => product.id === obj.id);
+// const includesArray = (data, arr) => {
+//   return data.some(e => Array.isArray(e) && e.every((o, i) => Object.is(arr[i], o)));
+// }
+
 const filterToCheckId = products.filter((product) => product.id === obj.id);
+const objeAttr = []
+filterToCheckId.forEach(element => {
+  objeAttr.push(element.selectedAttr)
+});
+
+// const filter = obj.selectedAttr && filterToCheckId ? filterToCheckId : [] 
 
 if ((filterToCheckId.length < 1) && !obj.selectedAttr) {
   // console.log("This item does not have attributes and it is not in the cart", filterToChec);
@@ -59,38 +65,48 @@ if ((filterToCheckId.length < 1) && !obj.selectedAttr) {
 
 if((filterToCheckId.length === 1) && !obj.selectedAttr) return
 
-console.log("I skipped it", filterToCheckId.length, obj.attributes);
-
-// if (!obj.attributes && !filterToCheckId) return addToCart(obj) 
-// if (!filter && !filterToCheckId)
-  for (let i = 0; i < filter.length; i++) {
-
-      const cartIndObjAttr = filter[i].selectedAttr
+// console.log("I skipped it", filterToCheckId.length, obj.attributes);
+// console.log('array', filterToCheckId);
+let result;
+// console.log(objeAttr);
+const res = []
+objeAttr.forEach((element) => {
+      // const cartIndObjAttr = element.selectedAttr
       const enteringObjAttr = obj.selectedAttr
-      const cartIndObjAttrKeys = Object.keys(cartIndObjAttr).sort()
-      const enteringObjAttrKeys = Object.keys(enteringObjAttr).sort()
+      // addToCart(obj)
 
-      if (cartIndObjAttrKeys.length !== enteringObjAttrKeys.length) {
-        return "Select All options"
-      }
 
-      for (let objKey of cartIndObjAttrKeys) {
-        if (cartIndObjAttr[objKey] !== enteringObjAttr[objKey]) {
-          console.log("Item not in cart");
-          console.log(cartIndObjAttr[objKey], enteringObjAttr[objKey]);
-          return addToCart(obj)
-        }
-        // else if (cartIndObjAttrKeys[objKey] === enteringObjAttrKeys[objKey]) {
-        //   console.log("Item in cart already");
-        //   return "Item in cart already"
-        // }
-      }
+      // console.log(cartIndObjAttr, enteringObjAttr);
+      for (let [key, value] of Object.entries(enteringObjAttr)) {
+          
+        const exist = objeAttr.findIndex(ele => ele[key] === value) > -1;
+        res.push(exist)
+        // if (cartIndObjAttr[key] !== enteringObjAttr[key]) {
+                  
+                  
+                  // console.log(cartIndObjAttr[key], enteringObjAttr[key]);
+                  // return addToCart(obj)
+      // }
+    }
+  });
+  
+  
+  console.log(res);
+  res.includes(false) && addToCart(obj)
+  
 
-      console.log("Item already in the cart");
-      console.log(cartIndObjAttr, enteringObjAttr);
-      // return addToCart(obj)
-      return
-  }
+// for (let i = 0; i < filterToCheckId.length; i++) {
+  
+//       const cartIndObjAttr = filterToCheckId[i].selectedAttr
+//       const enteringObjAttr = obj.selectedAttr
+//       console.log(i);
+//       for (let [key, value] of Object.entries(enteringObjAttr)) {
+//         if (cartIndObjAttr[key] !== enteringObjAttr[key]) {
+//           console.log(cartIndObjAttr[key], enteringObjAttr[key]);
+//           return addToCart(obj)
+//         }
+//       }
+//   }
   }
 
 // Because I have filtered it, I wont check it will have attributes and it would enhance the scalability
@@ -103,3 +119,10 @@ export {
   addTheProduct,
   
 }
+// if (!obj.attributes && !filterToCheckId) return addToCart(obj) 
+// if (!filter && !filterToCheckId)
+// const cartIndObjAttrKeys = Object.keys(cartIndObjAttr).sort()
+// const enteringObjAttrKeys = Object.keys(enteringObjAttr).sort()
+// if (cartIndObjAttrKeys.length !== enteringObjAttrKeys.length) {
+//   return "Select All options"
+// }
